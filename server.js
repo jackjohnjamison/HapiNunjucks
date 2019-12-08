@@ -4,6 +4,7 @@ const Hapi = require('@hapi/hapi')
 const Inert = require('@hapi/inert')
 const Vision = require('@hapi/vision')
 const Nunjucks = require('nunjucks')
+const Routes = require('./lib/routes.js')
 
 const init = async () => {
 
@@ -37,26 +38,7 @@ const init = async () => {
         path: `${__dirname}/templates`
     })
 
-    server.route([{
-        method: 'GET',
-        path: '/',
-        handler: (request, h) => {
-
-            return h.view('home', {
-                title: 'Homepage',
-                message: 'Hello Nunjucks!'
-            })
-        }
-    },
-    {  
-        method: 'GET',
-        path: '/img/{file*}',
-        handler: {
-          directory: { 
-            path: 'public/img'
-          }
-        }
-      }])
+    server.route(Routes)
 
     await server.start();
     console.log('Server running on %s', server.info.uri);
