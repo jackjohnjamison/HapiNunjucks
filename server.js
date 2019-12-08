@@ -1,7 +1,8 @@
 'use strict';
 
-const Path = require('path')
 const Hapi = require('@hapi/hapi')
+const Inert = require('@hapi/inert')
+const Vision = require('@hapi/vision')
 const Nunjucks = require('nunjucks')
 
 const init = async () => {
@@ -11,7 +12,10 @@ const init = async () => {
         host: 'localhost'
     });
 
-    await server.register( require('@hapi/vision') );
+    await server.register( [
+        Inert,
+        Vision
+    ] )
 
     server.views({
         engines: {
@@ -33,7 +37,7 @@ const init = async () => {
         path: `${__dirname}/templates`
     })
 
-    server.route({
+    server.route([{
         method: 'GET',
         path: '/',
         handler: (request, h) => {
@@ -41,9 +45,18 @@ const init = async () => {
             return h.view('home', {
                 title: 'Homepage',
                 message: 'Hello Nunjucks!'
-            });
+            })
         }
-    });
+    },
+    {  
+        method: 'GET',
+        path: '/img/{file*}',
+        handler: {
+          directory: { 
+            path: 'public/img'
+          }
+        }
+      }])
 
     await server.start();
     console.log('Server running on %s', server.info.uri);
