@@ -34,7 +34,7 @@ internals.main = async function () {
 
     server.views({
         engines: {
-            html: {
+            njk: {
                 compile: (src, options) => {
 
                     const template = Nunjucks.compile(src, options.environment);
@@ -56,10 +56,16 @@ internals.main = async function () {
     });
 
     server.route([
-        { 
+        {
             method: 'GET',
             path: '/',
-            handler: internals.rootHandler 
+            handler: (request, h) => {
+          
+                return h.view('home', {
+                    title: 'Homepage',
+                    message: "It's alive!"
+                })
+            }
         },
         {  
             method: 'GET',
