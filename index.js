@@ -1,25 +1,26 @@
-'use strict';
+'use strict'
 
 const Path = require('path');
 const Inert = require('@hapi/inert')
-const Hapi = require('@hapi/hapi');
-const Nunjucks = require('nunjucks');
+const Hapi = require('@hapi/hapi')
+const Nunjucks = require('nunjucks')
 const Vision = require('@hapi/vision')
+const Routes = require('./lib/routes.js')
 
 
 const internals = {
     templatePath: '.'
-};
+}
 
 
 internals.rootHandler = function (request, h) {
 
-    const relativePath = Path.relative(`${__dirname}/../..`, `${__dirname}/templates/${internals.templatePath}`);
+    const relativePath = Path.relative(`${__dirname}/../..`, `${__dirname}/templates/${internals.templatePath}`)
 
     return h.view('index', {
         title: `Running ${relativePath} | hapi ${request.server.version}`,
         message: 'Hello Nunjucks!'
-    });
+    })
 };
 
 
@@ -55,27 +56,7 @@ internals.main = async function () {
         path: `${__dirname}/templates`
     });
 
-    server.route([
-        {
-            method: 'GET',
-            path: '/',
-            handler: (request, h) => {
-          
-                return h.view('home', {
-                    title: 'Homepage',
-                    message: "It's alive!"
-                })
-            }
-        },
-        {  
-            method: 'GET',
-            path: '/img/{file*}',
-            handler: {
-            directory: { 
-                path: 'public/img'
-            }
-        }
-      }]);
+    server.route(Routes)
 
     await server.start();
     console.log('Server is running at ' + server.info.uri);
