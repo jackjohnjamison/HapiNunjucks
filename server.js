@@ -3,8 +3,10 @@
 const Hapi = require('@hapi/hapi')
 const Inert = require('@hapi/inert')
 const Vision = require('@hapi/vision')
-const Nunjucks = require('nunjucks')
 const Routes = require('./lib/routes.js')
+const Views = require('./lib/views.js')
+
+const Nunjucks = require('nunjucks')
 
 const init = async () => {
 
@@ -21,23 +23,24 @@ const init = async () => {
     server.views({
         engines: {
             njk: {
+                configure: ("templates"),
                 compile: (src, options) => {
                     const template = Nunjucks.compile(src, options.envronment);
                     return context => {
                         return template.render(context);
                     };
                 },
-
+    
                 prepare: (options, next) => {
                     options.compileOptions.environment = Nunjucks.configure(options.path, { watch: false });
                     return next();
                 }
             }
         },
-
-        path: `${__dirname}/templates`
+        
+        relativeTo: __dirname,
+        path: 'templates'
     })
-
     server.route(Routes)
 
     await server.start();
