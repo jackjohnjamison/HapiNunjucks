@@ -8,6 +8,8 @@ const Vision = require('@hapi/vision')
 const Routes = require('./lib/routes.js')
 
 
+
+
 const internals = {
     templatePath: '.'
 }
@@ -58,8 +60,10 @@ internals.main = async function () {
 
     server.route(Routes)
 
-    await server.start();
-    console.log('Server is running at ' + server.info.uri);
+    await server.start()
+    console.log('Server is running at ' + server.info.uri)
 };
 
-internals.main();
+internals.main()
+
+
