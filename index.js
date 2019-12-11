@@ -8,12 +8,9 @@ const Vision = require('@hapi/vision')
 const Routes = require('./lib/routes.js')
 
 
-
-
 const internals = {
     templatePath: '.'
 }
-
 
 internals.rootHandler = function (request, h) {
 
@@ -66,12 +63,4 @@ internals.main = async function () {
 
 internals.main()
 
-
-///////////////////////////////////////
-const testFolder = './templates/';
-const fs = require('fs');
-
-fs.readdirSync(testFolder).forEach(file => {
-  console.log(file);
-});
 
