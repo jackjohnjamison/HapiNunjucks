@@ -10,7 +10,7 @@
     <img src="/img/oc.jpg" />
 
     <section> 
-        {% for post in postsAllContent %}
+        {% for post in model %}
             <h3>{{post.title}}</h3>
             <p>{{post.body}}</p>
         {% endfor %}    
