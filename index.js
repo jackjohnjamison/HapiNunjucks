@@ -67,3 +67,11 @@ internals.main = async function () {
 internals.main()
 
 
+///////////////////////////////////////
+const testFolder = './templates/';
+const fs = require('fs');
+
+fs.readdirSync(testFolder).forEach(file => {
+  console.log(file);
+});
+

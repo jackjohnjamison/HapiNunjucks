@@ -5,17 +5,13 @@
 
     <p>{{message}}</p>
 
-    
-
-    <img src="/img/oc.jpg" />
-
     <section> 
         {% for post in model %}
             <h3>{{post.title}}</h3>
             <p>{{post.body}}</p>
         {% endfor %}    
     </section>
-
+ 
 {% endblock %}
 
 {% block scripts %}
