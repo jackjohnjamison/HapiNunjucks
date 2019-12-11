@@ -16,7 +16,9 @@
         {% endfor %}    
     </section>
 
-
 {% endblock %}
-   
+
+{% block scripts %}
+    <script> const modelDebug = {{modelDebug | safe}} </script>
+{% endblock %}
 
