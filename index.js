@@ -1,6 +1,6 @@
 'use strict'
 
-const Path = require('path');
+const Path = require('path')
 const Inert = require('@hapi/inert')
 const Hapi = require('@hapi/hapi')
 const Nunjucks = require('nunjucks')
@@ -37,12 +37,12 @@ internals.main = async function () {
             njk: {
                 compile: (src, options) => {
 
-                    const template = Nunjucks.compile(src, options.environment);
+                    const template = Nunjucks.compile(src, options.environment)
 
                     return (context) => {
 
-                        return template.render(context);
-                    };
+                        return template.render(context)
+                    }
                 },
 
                 prepare: (options, next) => {
@@ -55,7 +55,7 @@ internals.main = async function () {
         path: `${__dirname}/templates`
     })
 
-    server.route(Routes)
+    server.route(Routes.routes)
 
     await server.start()
     console.log('Server is running at ' + server.info.uri)
