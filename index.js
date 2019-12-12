@@ -25,7 +25,7 @@ internals.rootHandler = function (request, h) {
 
 internals.main = async function () {
 
-    const server = Hapi.Server({ port: 3000 });
+    const server = Hapi.Server({ port: 3000 })
 
     await server.register( [
         Inert,
@@ -53,13 +53,13 @@ internals.main = async function () {
             }
         },
         path: `${__dirname}/templates`
-    });
+    })
 
     server.route(Routes)
 
     await server.start()
     console.log('Server is running at ' + server.info.uri)
-};
+}
 
 internals.main()
 
