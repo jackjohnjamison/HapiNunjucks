@@ -1,5 +1,7 @@
-<ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/about">About</a></li>
-    <li><a href="/posts">Posts</a></li>
-</ul>
+{% block links %}
+    <ul>
+        {% for links in model.links %}
+            <li><a href="{{links.link}}">{{links.linkName}}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
