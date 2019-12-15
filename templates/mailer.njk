@@ -4,14 +4,20 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Mail</title>
+        <title>{{model.title}}</title>
         <meta name="The Hapi Nun" content="A toy I made for development fun">
         <meta name="JackJohn Jamison" content="SitePoint">
     </head>
 
     <body>
 
-        I'm an email
+        <p>{{model.title}}</p>
+
+    <ul>
+        {% for links in model.links %}
+            <li><a href="{{links.link}}">{{links.linkName}}</a></li>
+        {% endfor %}
+    </ul>
 
     </body>
 </html>
