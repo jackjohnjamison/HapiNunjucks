@@ -9,12 +9,13 @@
     "@hapi/vision": "^6.0.0",
     "@hapi/wreck": "^17.0.0",
     "@sendgrid/mail": "^6.5.5",
-    "nodemailer": "^6.4.11",
-    "nunjucks": "^3.2.2",
+    "concurrently": "^5.2.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^6.1.0",
     "gulp-sass": "^4.1.0",
-    "gulp-strip-comments": "^2.5.2"
+    "gulp-strip-comments": "^2.5.2",
+    "nodemailer": "^6.4.11",
+    "nunjucks": "^3.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
@@ -23,8 +24,10 @@
     "gulp-babel-minify": "^0.5.1"
   },
   "scripts": {
-    "dev": "gulp",
-		"build": "gulp build",
+    "start": "node index.js",
+    "gulp": "gulp",
+    "dev": "concurrently \"npm run gulp\" \"npm run start\" ",
+    "build": "gulp build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

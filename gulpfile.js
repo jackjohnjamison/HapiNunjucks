@@ -18,8 +18,15 @@ var paths = {
 };
 
 const brandingStyles = () => {
+	return gulp.src(paths.assets.css.src)
+	  .pipe(sass().on('error', sass.logError))
+	  .pipe(autoprefixer({cascade: false}))
+	  .pipe(gulp.dest(paths.assets.css.dist))
+  };
+
+const brandingStylesMini = () => {
   return gulp.src(paths.assets.css.src)
-	.pipe(sass().on('error', sass.logError))
+	.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
 	.pipe(autoprefixer({cascade: false}))
     .pipe(gulp.dest(paths.assets.css.dist))
 };
@@ -51,7 +58,7 @@ const watch = gulp.parallel(watchTemplates)
 watch.description = 'Watching for changes';
 
 const defaultTasks = gulp.series(brandingStyles, babelfy, watch);
-const build = gulp.series(brandingStyles, babelMini);
+const build = gulp.series(brandingStylesMini, babelMini);
 
 exports.brandingStyles = brandingStyles;
 exports.babel = babelfy;
