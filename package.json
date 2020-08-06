@@ -10,10 +10,21 @@
     "@hapi/wreck": "^17.0.0",
     "@sendgrid/mail": "^6.5.5",
     "nodemailer": "^6.4.11",
-    "nunjucks": "^3.2.2"
+    "nunjucks": "^3.2.2",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-strip-comments": "^2.5.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "gulp-babel": "^8.0.0",
+    "gulp-babel-minify": "^0.5.1"
+  },
   "scripts": {
+    "dev": "gulp",
+		"build": "gulp build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
