@@ -13,6 +13,14 @@ Run Docker container (on port 3000):
 Push to Docker Hub:
     docker push johnjamison/hapi-nun
 
+Docker server side commands:
+    Pull the latest image:
+        docker pull johnjamison/hapi-nun
+
+    Run the image:
+        docker run -p 3000:3000 johnjamison/hapi-nun
+
+
 Scripts:
     npm run dev:
         This runs sass on the sass files found in assets/src/css and places them in assets/dist/css as well as running babel on any JavaScript found in assets/src/js and placing it in assets/dist/js directory. It also starts a watch task to re-run these tasks if detects any changes to the relevant directories and starts a browser window with browser-sync.
@@ -28,5 +36,6 @@ Scripts:
 
     npm run dist:
         This runs build, build-image and push consecutively.
+
 
     
