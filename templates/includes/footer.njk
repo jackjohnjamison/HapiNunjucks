@@ -1,7 +1,7 @@
 {% block links %}
     <ul>
-        {% for links in model.links %}
-            <li><a href="{{links.link}}">{{links.linkName}}</a></li>
+        {% for link in model.links %}
+            <li><a href="{{link.link}}">{{link.linkName}}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}

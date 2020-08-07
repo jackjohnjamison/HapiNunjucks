@@ -38,4 +38,10 @@ Scripts:
         This runs build, build-image and push consecutively.
 
 
-    
+Notes:
+    Colour palette:
+        https://paletton.com/#uid=33a1h0kllllaFw0g0qFqFg0w0aF
+
+Tutorials:
+    Dockerise your node app:
+        https://buddy.works/guides/how-dockerize-node-application

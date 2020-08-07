@@ -1,1 +1,3 @@
-console.log("JavaScript running test 1");
+"use strict";
+
+console.log('JavaScript running test 1');

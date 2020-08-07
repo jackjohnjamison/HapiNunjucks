@@ -3,7 +3,7 @@
 {% block main %} 
    <h1>Hello bitches</h1>
 
-    <p>{{message}}</p>
+    <p>{{model.message}}</p>
 
     <section> 
         {% for post in model.posts %}
@@ -15,8 +15,8 @@
 {% endblock %}
 
 {% block scripts %}
-    {% if model.debug %}
-        <script> const modelDebug = {{model.debug | safe}} </script>
+    {% if debug %}
+        <script> const modelDebug = {{debug | safe}} </script>
     {% endif %}
 {% endblock %}
 
