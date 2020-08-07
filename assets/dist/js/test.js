@@ -1,3 +1,1 @@
-"use strict";
-
-console.log('JavaScript running test 1');
+console.log(modelDebug);

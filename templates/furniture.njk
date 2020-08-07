@@ -19,7 +19,12 @@
         {% include 'includes/footer.njk' %}
     {% endblock %}
     
-    {% block scripts %}<script src="js/test.js"></script>{% endblock %}
+    {% block scripts %}
+        {% if debug %}
+            <script> const modelDebug = {{debug | safe}} </script>
+            <script src="js/test.js"></script>
+        {% endif %}
+    {% endblock %}
 
     </body>
 </html>

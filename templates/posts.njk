@@ -6,17 +6,11 @@
     <p>{{model.message}}</p>
 
     <section> 
-        {% for post in model.posts %}
+        {% for post in model.data.posts %}
             <h3>{{post.title}}</h3>
             <p>{{post.body}}</p>
         {% endfor %}    
     </section>
  
-{% endblock %}
-
-{% block scripts %}
-    {% if debug %}
-        <script> const modelDebug = {{debug | safe}} </script>
-    {% endif %}
 {% endblock %}
 
