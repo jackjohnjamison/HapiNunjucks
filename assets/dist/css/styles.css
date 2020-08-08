@@ -42,6 +42,15 @@ p, h3 {
   .main-nav .link-list__item[aria-label="current page"] a {
     background: red; }
 
+.image-group {
+  display: flex;
+  width: 100%; }
+  .image-group div {
+    flex: 1;
+    margin-right: 20px; }
+  .image-group .image-group__image {
+    width: 100%; }
+
 .cf::after {
   content: "";
   clear: both;

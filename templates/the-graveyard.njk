@@ -1,4 +1,33 @@
 {% extends "furniture.njk" %}
 
-{% block content %}{% endblock %}
+{% block content %}
+
+    <h2>Three JS FPS experiment</h2>
+
+    <p>An exploration of some of the features of the <a href="https://threejs.org/" target="_blank">ThreeJS</a> JavaScript library for 3D animation made in the style of a first person computer game. It features some basic controls and movement you might be familiar with as well a randomised forest and colourful cubes.
+No credit can be taken for the 3D assets which were sourced online.
+    </p>
+
+    <div class="image-group">
+        <div>
+            <img class="image-group__image" src="img/threeCuboid.jpg" />
+        </div>
+        <div>
+            <img class="image-group__image" src="img/threeTrees.jpg" />
+        </div>
+    </div>
+
+    <h3>Controls</h3>
+    <ul>
+        <li><strong>Play:</strong> Enter</li>
+        <li><strong>Enter full screen:</strong> f1</li>
+        <li><strong>Pause and exit full screen:</strong> esc</li>
+        <li><strong>Movement:</strong> W A S D</li>
+        <li><strong>Jump:</strong> Space</li>
+        <li><strong>Cast ray / shoot:</strong> Right mouse button</li>
+    </ul>
+
+    <a href="{{model.links.three_js_fps.href}}">Play here</a>
+
+{% endblock %}
 
