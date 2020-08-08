@@ -1,0 +1,115 @@
+.cf::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.ul--no-bullets {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.text-align-right {
+    text-align: right;
+}
+
+.text-align-left {
+    text-align: left;
+}
+
+.display-block {
+    display: block;
+}
+
+.display-inline {
+    display: inline;
+}
+
+.display-inline-block {
+    display: inline-block;
+}
+
+.display-none {
+    display: none;
+}
+
+.remove-underline {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.screen-reader {
+    position: absolute !important;
+    height: 1px; width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+$intervals: (
+    5: 5px,
+    10: 10px,
+    20: 20px,
+    30: 30px,
+    40: 40px,
+    60: 60px,
+    80: 80px,
+    100: 100px
+);
+
+@mixin boundries($attribute) {
+    @each $size, $units in $intervals {
+        &-#{$size} {
+            #{$attribute}: $units;
+        }
+    }
+}
+
+.margin {
+    @include boundries($attribute: 'margin');
+}
+
+.margin-top {
+    @include boundries($attribute: 'margin-top');
+}
+
+.margin-right {
+    @include boundries($attribute: 'margin-right');
+}
+
+.margin-bottom {
+    @include boundries($attribute: 'margin-bottom');
+}
+
+.margin-left {
+    @include boundries($attribute: 'margin-left');
+}
+
+.padding {
+    @include boundries($attribute: 'padding');
+}
+
+.padding-top {
+    @include boundries($attribute: 'padding-top');
+}
+
+.padding-right {
+    @include boundries($attribute: 'padding-right');
+}
+
+.padding-bottom {
+    @include boundries($attribute: 'padding-bottom');
+}
+
+.padding-left {
+    @include boundries($attribute: 'padding-left');
+}

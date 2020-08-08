@@ -1,0 +1,23 @@
+// CSS variable colours
+:root {
+    --color-body: #ccc;
+};
+
+
+// Static colours
+$static-colors: (
+    github: #6e5494,
+    friendly-green: #79b47c
+);
+
+@mixin colors($attribute) {
+    @each $name, $hex in $static-colors {
+        &--#{$name} {
+            #{$attribute}: $hex;
+        }
+    }
+}
+
+.font-color {
+    @include colors($attribute: 'color')
+}

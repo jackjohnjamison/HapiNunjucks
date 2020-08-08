@@ -1,0 +1,22 @@
+.main-nav {
+    background: orange;
+
+    .link-list {
+        @extend .ul--no-bullets;
+        display: block;
+    }
+
+    .link-list__item {
+        float: left;
+    }
+
+    .link-list__item a {
+        display: block;
+        padding: 10px 20px;
+        text-decoration: none;
+    }
+
+    .link-list__item[aria-label="current page"] a {
+        background: red;
+    }
+}

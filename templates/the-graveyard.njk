@@ -1,33 +1,44 @@
 {% extends "furniture.njk" %}
 
 {% block content %}
+    <section>
+        <article>
+            <h2>Three JS FPS experiment</h2>
 
-    <h2>Three JS FPS experiment</h2>
+            <p>An exploration of some of the features of the {{ links.external('https://threejs.org/', 'ThreeJS') }} JavaScript library for 3D animation made in the style of a first person computer game. It features some basic controls and movement you might be familiar with as well a randomised forest and colourful cuboids.
+        No credit can be taken for the 3D assets which were sourced online.
+            </p>
 
-    <p>An exploration of some of the features of the <a href="https://threejs.org/" target="_blank">ThreeJS</a> JavaScript library for 3D animation made in the style of a first person computer game. It features some basic controls and movement you might be familiar with as well a randomised forest and colourful cubes.
-No credit can be taken for the 3D assets which were sourced online.
-    </p>
+            <div class="image-group">
+                <div>
+                    {{ images.image("img/threeCuboid.jpg", class="image-group__image", alt="colorful cubes") }}
+                </div>
+                <div>
+                    {{ images.image("img/threeTrees.jpg", class="image-group__image", alt="dark forest") }}
+                </div>
+            </div>
 
-    <div class="image-group">
-        <div>
-            <img class="image-group__image" src="img/threeCuboid.jpg" />
-        </div>
-        <div>
-            <img class="image-group__image" src="img/threeTrees.jpg" />
-        </div>
-    </div>
+            <div class="cf">
+                <div class="float-left">
+                    <h3>Controls</h3>
+                    <ul class="ul--no-bullets margin-bottom-20">
+                        <li class="margin-bottom-5"><strong>Play:</strong> Enter</li>
+                        <li class="margin-bottom-5"><strong>Enter full screen:</strong> f1</li>
+                        <li class="margin-bottom-5"><strong>Pause and exit full screen:</strong> esc</li>
+                        <li class="margin-bottom-5"><strong>Movement:</strong> W A S D</li>
+                        <li class="margin-bottom-5"><strong>Jump:</strong> Space</li>
+                        <li class="margin-bottom-5"><strong>Cast ray / shoot:</strong> Right mouse button</li>
+                    </ul>
+                </div>
+                <div class="margin-top-20 margin-right-20 float-right text-align-right">
+                    <ul class="ul--no-bullets">
+                        <li class="margin-bottom-10">{{ links.cubbycon(model.links.three_js_fps.href, text="Play game", entity="▶", external=true, icon_class="font-color--friendly-green") }}</li>
+                        <li class="margin-bottom-10">{{ links.cubbycon('https://github.com/jackjohnjamison/Three', text="GitHub", entity="🖳", external=true, icon_class="font-color--github") }}</li>
+                    </ul>
+                </div>
+            </div>
 
-    <h3>Controls</h3>
-    <ul>
-        <li><strong>Play:</strong> Enter</li>
-        <li><strong>Enter full screen:</strong> f1</li>
-        <li><strong>Pause and exit full screen:</strong> esc</li>
-        <li><strong>Movement:</strong> W A S D</li>
-        <li><strong>Jump:</strong> Space</li>
-        <li><strong>Cast ray / shoot:</strong> Right mouse button</li>
-    </ul>
-
-    <a href="{{model.links.three_js_fps.href}}">Play here</a>
-
+        </article>
+    </section>
 {% endblock %}
 

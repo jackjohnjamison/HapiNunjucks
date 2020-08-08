@@ -1,9 +1,19 @@
-{% macro link_list(links, classes = "", newWindow = false, currentPage) %}
+{% macro list(links, classes = "", external = false, currentPage) %}
     <ul class="link-list cf {{classes}}">
-        {% for link in links%}
+        {% for link in links %}
             <li class="link-list__item link-list__item--{{link.name}}" {% if link.name === currentPage %}aria-label="current page"{% endif %}>
-                <a href="{{link.href}}" {% if newWindow %}target="_blank"{% endif %}>{{link.text}}</a>
+                <a href="{{link.href}}" {% if external %}target="_blank"{% endif %}>{{ link.text }}{% if external %}{{ external_text() }}{% endif %}</a>
             </li>
         {% endfor %}
     </ul>
 {% endmacro %}
+
+{% macro cubbycon(href, text, class, entity, external = false, icon_class) %}
+    <a class="chubbycon {{class}}" href="{{href}}" {% if external %}target="_blank"{% endif %}>{% if external %}{{ external_icon() }}<span class="remove-underline">&nbsp;</span>{% endif %}<span>{{ text }}</span><span class="remove-underline">&nbsp;</span>{% if external %}{{ external_text() }}{% endif %}<span class="icon icon--chubbycon {{icon_class}}" style="color: {{color}}">{{ entity }}</span></a>
+{% endmacro %}
+
+{% macro external(href, text) %}<a href="{{href}}" target="_blank">{{ text }}{{ external_text() }}{{ external_icon() }}</a>{% endmacro %}
+
+{% macro external_text() %}<span class="screen-reader">&nbsp;opens in a new windwon</span>{% endmacro %}
+
+{% macro external_icon() %}<span class="icon" aria-hidden="true">&#x2924;</span>{% endmacro %}

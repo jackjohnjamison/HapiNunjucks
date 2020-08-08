@@ -1,0 +1,25 @@
+:root {
+    --page-width: 1200px;
+}
+
+body {
+    font-family: var(--body-font);
+    margin: 0;
+    padding: 0;
+    overflow-y:scroll;
+    background: var(--color-body);
+}
+
+.wrapper {
+    margin: 0 auto;
+    max-width: var(--page-width);
+}
+
+.wrapper--body {
+    background: #fff;
+    min-height: 100vh;
+}
+
+.wrapper--main {
+    padding: 0 30px 40px;
+}
