@@ -4,27 +4,39 @@
     <head>
         <meta charset="utf-8">
 
-        <title>{{model.title}}</title>
+        <title>{{ model.title }}</title>
         <meta name="The Hapi Nun" content="A toy I made for development fun">
-        <meta name="Jack John Jamison" content="">
+        <meta name='John "Jack" Jamison' content="">
 
         <link rel="stylesheet" href="/css/styles.css">
     </head>
 
-    <body>
+    <body class="page--{{model.pageName}}">
+        <div class="wrapper wrapper--body">
+            {% block header_nav %}
+                {% include 'includes/header-nav.njk' %}
+            {% endblock %}
 
-    {% block main %}{% endblock %}
+            <div class="wrapper wrapper--main">
+                {% block page_heading %}
+                    {% include 'includes/page-heading.njk' %}
+                {% endblock %}
 
-    {% block footer %}
-        {% include 'includes/footer.njk' %}
-    {% endblock %}
-    
-    {% block scripts %}
-        {% if debug %}
-            <script> const modelDebug = {{debug | safe}} </script>
-            <script src="js/test.js"></script>
-        {% endif %}
-    {% endblock %}
+                {% block content %}<p>No content has been added to this page</p>{% endblock %}
+            </div>
 
+            <div class="wrapper wrapper--footer">
+                {% block footer %}
+                    {% include 'includes/footer.njk' %}
+                {% endblock %}
+            </div>
+            
+            {% block scripts %}
+                {% if debug %}
+                    <script> const modelDebug = {{debug | safe}} </script>
+                    <script src="js/test.js"></script>
+                {% endif %}
+            {% endblock %}
+        </div>
     </body>
 </html>

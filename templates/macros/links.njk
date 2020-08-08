@@ -1,0 +1,9 @@
+{% macro link_list(links, classes = "", newWindow = false, currentPage) %}
+    <ul class="link-list cf {{classes}}">
+        {% for link in links%}
+            <li class="link-list__item link-list__item--{{link.name}}" {% if link.name === currentPage %}aria-label="current page"{% endif %}>
+                <a href="{{link.href}}" {% if newWindow %}target="_blank"{% endif %}>{{link.text}}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endmacro %}

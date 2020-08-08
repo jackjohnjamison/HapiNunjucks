@@ -1,0 +1,5 @@
+{% from 'macros/links.njk' import link_list %}
+
+<nav class="main-nav" aria-label="main">
+    {{ link_list([model.links.home, model.links.posts, model.links.the_graveyard, model.links.about], currentPage = model.pageName) }}
+</nav>

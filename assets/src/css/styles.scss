@@ -1,7 +1,69 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
+:root {
+    --body-font: Arial, Helvetica, sans-serif;
+
+    --page-width: 1200px;
+
+    --body-color: #ccc;
 }
 
-h1 {
-    background: green;
+body {
+    font-family: var(--body-font);
+    margin: 0;
+    padding: 0;
+    overflow-y:scroll;
+    background: var(--body-color);
+}
+
+a {
+    text-decoration: none;
+}
+
+p, h3 {
+    overflow: hidden;
+
+}
+
+.wrapper {
+    margin: 0 auto;
+    max-width: var(--page-width);
+}
+
+.wrapper--body {
+    background: #fff;
+    min-height: 100vh;
+}
+
+.wrapper--main {
+    padding: 0 30px 40px;
+}
+
+.main-nav {
+    background: orange;
+
+    .link-list {
+        display: block;
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+
+    }
+
+    .link-list__item {
+        float: left;
+    }
+
+    .link-list__item a {
+        display: block;
+        padding: 10px 20px;
+    }
+
+    .link-list__item[aria-label="current page"] a {
+        background: red;
+    }
+}
+
+.cf::after {
+    content: "";
+    clear: both;
+    display: table;
 }
