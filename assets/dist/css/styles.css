@@ -13,9 +13,6 @@ body {
 a {
   text-decoration: none; }
 
-p, h3 {
-  overflow: hidden; }
-
 .wrapper {
   margin: 0 auto;
   max-width: var(--page-width); }

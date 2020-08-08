@@ -1,8 +1,9 @@
 Install dependencies:
     npm i
 
-Install Browser Sync:
+Install Browser Sync and Nodemon:
     npm i browser-sync -g
+    npm install nodemon -g
 
 Build Docker image:
     docker build -t johnjamison/hapi-nun .

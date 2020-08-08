@@ -2,7 +2,14 @@
   "name": "hapinunjucks",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
+  "nodemonConfig": {
+    "watch": ["server.js", "templates/", "lib/"],
+    "ext": "js, njk",
+    "events": {
+      "restart": "browser-sync reload"
+    }
+  },
   "dependencies": {
     "@hapi/hapi": "^19.2.0",
     "@hapi/inert": "^6.0.1",
@@ -19,12 +26,13 @@
     "@babel/core": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "gulp-babel": "^8.0.0",
-    "gulp-babel-minify": "^0.5.1"
+    "gulp-babel-minify": "^0.5.1",
+    "nodemon": "^2.0.4"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "node server.js",
     "gulp": "gulp",
-    "dev": "concurrently \"npm run gulp\" \"npm run start\" \"browser-sync start --proxy=\"http://localhost:3000/\" --files=\"*.js, assets/dist/css/styles.css\" --no-inject-changes\" ",
+    "dev": "concurrently \"npm run gulp\" \"nodemon server.js\" \"browser-sync start --proxy=\"http://localhost:3000/\" --files=\"assets/dist/**/*\" --no-inject-changes\" ",
     "build": "gulp build",
     "build-image": "docker build -t johnjamison/hapi-nun .",
     "push": "docker push johnjamison/hapi-nun",
