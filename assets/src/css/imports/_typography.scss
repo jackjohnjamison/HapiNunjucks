@@ -18,21 +18,9 @@
 
 .icon {
     @extend .font--icons;
-
     display: inline-block;
-    text-decoration: none!important;
 }
 
-// Chubbycon
-
-.icon--chubbycon {
-    font-size: 40px;
-    vertical-align: middle;
-    transition: all .3s ease-in-out;
-}
-
-.chubbycon {
-    &:hover .icon--chubbycon {
-        transform: scale(1.1)
-    }
+.icon--external {
+    vertical-align: text-top;
 }

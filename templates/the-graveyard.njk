@@ -2,26 +2,26 @@
 
 {% block content %}
     <section>
-        <article>
+        <article class="brick brick--woven">
             <h2>Three JS FPS experiment</h2>
 
             <p>An exploration of some of the features of the {{ links.external('https://threejs.org/', 'ThreeJS') }} JavaScript library for 3D animation made in the style of a first person computer game. It features some basic controls and movement you might be familiar with as well a randomised forest and colourful cuboids.
         No credit can be taken for the 3D assets which were sourced online.
             </p>
 
-            <div class="image-group">
-                <div>
-                    {{ images.image("img/threeCuboid.jpg", class="image-group__image", alt="colorful cubes") }}
+            <div class="grid-col-2--tablet">
+                <div class="margin-bottom-10">
+                    {{ images.image("img/threeCuboid.jpg", class="full-width", alt="colorful cubes") }}
                 </div>
-                <div>
-                    {{ images.image("img/threeTrees.jpg", class="image-group__image", alt="dark forest") }}
+                <div class="margin-bottom-10">
+                    {{ images.image("img/threeTrees.jpg", class="full-width", alt="dark forest") }}
                 </div>
             </div>
 
-            <div class="cf">
-                <div class="float-left">
+            <div class="grid-col-2--tablet">
+                <div>
                     <h3>Controls</h3>
-                    <ul class="ul--no-bullets margin-bottom-20">
+                    <ul class="ul--no-bullets">
                         <li class="margin-bottom-5"><strong>Play:</strong> Enter</li>
                         <li class="margin-bottom-5"><strong>Enter full screen:</strong> f1</li>
                         <li class="margin-bottom-5"><strong>Pause and exit full screen:</strong> esc</li>
@@ -30,14 +30,13 @@
                         <li class="margin-bottom-5"><strong>Cast ray / shoot:</strong> Right mouse button</li>
                     </ul>
                 </div>
-                <div class="margin-top-20 margin-right-20 float-right text-align-right">
-                    <ul class="ul--no-bullets">
-                        <li class="margin-bottom-10">{{ links.cubbycon(model.links.three_js_fps.href, text="Play game", entity="▶", external=true, icon_class="font-color--friendly-green") }}</li>
-                        <li class="margin-bottom-10">{{ links.cubbycon('https://github.com/jackjohnjamison/Three', text="GitHub", entity="🖳", external=true, icon_class="font-color--github") }}</li>
+                <div class="margin-top-20">
+                    <ul class="ul--no-bullets article-button--list">
+                        {{ links.cubbycon(model.links.three_js_fps.href, text="Play game", entity="▶", external=true, icon_class="font-color--friendly-green") }}
+                        {{ links.cubbycon('https://github.com/jackjohnjamison/Three', text="GitHub", entity="🖳", external=true, icon_class="font-color--github") }}
                     </ul>
                 </div>
             </div>
-
         </article>
     </section>
 {% endblock %}

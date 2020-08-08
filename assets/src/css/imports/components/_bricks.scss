@@ -1,0 +1,27 @@
+.brick {
+    background: var(--color-brick);
+    padding: var(--base-interval-2);
+    margin-bottom: var(--base-interval-1);
+    border-radius: var(--base-interval-2);
+}
+
+.brick--heading {
+    padding-top: 40px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: var(--base-interval-1);
+}
+
+.brick--woven {
+    padding-bottom: var(--base-interval-2);
+}
+
+.brick--woven:nth-child(odd) {
+    border-top-right-radius: var(--base-interval-1);
+    border-bottom-left-radius: var(--base-interval-1);
+}
+
+.brick--woven:nth-child(even) {
+    border-top-left-radius: var(--base-interval-1);
+    border-bottom-right-radius: var(--base-interval-1);
+}

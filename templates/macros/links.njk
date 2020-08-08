@@ -9,11 +9,24 @@
 {% endmacro %}
 
 {% macro cubbycon(href, text, class, entity, external = false, icon_class) %}
-    <a class="chubbycon {{class}}" href="{{href}}" {% if external %}target="_blank"{% endif %}>{% if external %}{{ external_icon() }}<span class="remove-underline">&nbsp;</span>{% endif %}<span>{{ text }}</span><span class="remove-underline">&nbsp;</span>{% if external %}{{ external_text() }}{% endif %}<span class="icon icon--chubbycon {{icon_class}}" style="color: {{color}}">{{ entity }}</span></a>
+    <li class="article-button--tab">
+        <a class="article-button display-block {{class}}" href="{{href}}" {% if external %}target="_blank"{% endif %}>
+            <span class="article-button__text">
+                {% if external %}
+                    {{ external_icon() }}
+                {% endif %}
+                <span>{{ text }}</span>
+                {% if external %}
+                    {{ external_text() }}
+                {% endif %}
+            </span>
+            <span class="icon icon--article-button {{icon_class}}">{{ entity }}</span>
+        </a>
+    </li>
 {% endmacro %}
 
 {% macro external(href, text) %}<a href="{{href}}" target="_blank">{{ text }}{{ external_text() }}{{ external_icon() }}</a>{% endmacro %}
 
 {% macro external_text() %}<span class="screen-reader">&nbsp;opens in a new windwon</span>{% endmacro %}
 
-{% macro external_icon() %}<span class="icon" aria-hidden="true">&#x2924;</span>{% endmacro %}
+{% macro external_icon() %}<span class="icon icon--external" aria-hidden="true">&#x2924;</span>{% endmacro %}

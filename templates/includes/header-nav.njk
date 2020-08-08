@@ -1,3 +1,7 @@
 <nav class="main-nav" aria-label="main">
-    {{ links.list([model.links.home, model.links.posts, model.links.graveyard, model.links.about], currentPage = model.pageName) }}
+    <div class="wrapper">
+        <div class="main-nav--inner">
+            {{ links.list([model.links.home, model.links.posts, model.links.graveyard, model.links.about], currentPage = model.pageName) }}
+        </div>
+    </div>
 </nav>

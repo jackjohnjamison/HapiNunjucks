@@ -10,6 +10,10 @@
     margin: 0;
 }
 
+.full-width {
+    width: 100%;
+}
+
 .float-left {
     float: left;
 }
@@ -61,6 +65,7 @@ $intervals: (
     20: 20px,
     30: 30px,
     40: 40px,
+    50: 50px,
     60: 60px,
     80: 80px,
     100: 100px

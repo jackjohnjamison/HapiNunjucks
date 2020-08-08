@@ -1,0 +1,46 @@
+.article-button--tab {
+    border: solid 2px #000;
+    border-radius: 14px;
+    border-top-left-radius: 0;
+    margin-bottom: 12px;
+}
+
+.article-button__text {
+    float: left;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.article-button {
+    text-decoration: none;
+    text-align: right;
+    padding: 6px;
+    width: 100%;
+    box-sizing: border-box;
+
+    &:hover .icon--article-button {
+        transform: scale(1.08)
+    }
+}
+
+.icon--article-button {
+    font-size: 40px;
+    vertical-align: middle;
+    transition: transform .3s ease-in-out;   
+}
+
+
+@media (min-width: $screen-small) {
+    .article-button--list {
+            float: right;
+    }
+
+    .article-button--tab {
+        border-top-right-radius: 0;
+        border-top-left-radius: 14px;
+    }
+
+    .article-button {
+        width: 186px;
+    }
+}

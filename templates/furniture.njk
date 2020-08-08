@@ -16,25 +16,25 @@
 
     <body class="page--{{model.pageName}}">
         {% block body %}
-            <div class="wrapper wrapper--body">
-                {% block header_nav %}
-                    {% include 'includes/header-nav.njk' %}
+
+            {% block header_nav %}
+                {% include 'includes/header-nav.njk' %}
+            {% endblock %}
+
+            <div class="wrapper">
+                {% block page_heading %}
+                    {% include 'includes/page-heading.njk' %}
                 {% endblock %}
 
-                <div class="wrapper wrapper--main">
-                    {% block page_heading %}
-                        {% include 'includes/page-heading.njk' %}
-                    {% endblock %}
-
-                    {% block content %}<p>No content has been added to this page</p>{% endblock %}
-                </div>
-
-                <div class="wrapper wrapper--footer">
-                    {% block footer %}
-                        {% include 'includes/footer.njk' %}
-                    {% endblock %}
-                </div>
+                {% block content %}<p>No content has been added to this page</p>{% endblock %}
             </div>
+
+            <div class="wrapper padding-bottom-60">
+                {% block footer %}
+                    {% include 'includes/footer.njk' %}
+                {% endblock %}
+            </div>
+
 
             {% block site_scripts %}
                 {% if debug %}

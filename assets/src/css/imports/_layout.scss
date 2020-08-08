@@ -1,5 +1,8 @@
 :root {
     --page-width: 1200px;
+    --base-interval-1: 10px;
+    --base-interval-2: 20px;
+    --base-radius: 20px;
 }
 
 body {
@@ -13,13 +16,6 @@ body {
 .wrapper {
     margin: 0 auto;
     max-width: var(--page-width);
-}
-
-.wrapper--body {
-    background: #fff;
-    min-height: 100vh;
-}
-
-.wrapper--main {
-    padding: 0 30px 40px;
+    padding-right: var(--base-interval-1);
+    padding-left: var(--base-interval-1);
 }

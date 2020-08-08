@@ -1,5 +1,10 @@
 .main-nav {
     background: orange;
+    font-size: 18px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
 
     .link-list {
         @extend .ul--no-bullets;
@@ -12,7 +17,7 @@
 
     .link-list__item a {
         display: block;
-        padding: 10px 20px;
+        padding: var(--base-interval-1) var(--base-interval-2);
         text-decoration: none;
     }
 
