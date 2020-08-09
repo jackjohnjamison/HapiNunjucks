@@ -1,9 +1,15 @@
 // CSS variable colours
 :root {
-    --color-body: #ccc;
+    --color-body: #f2f2f2;
     --color-brick: #fff;
+    --color-brick-border: #ccc;
+    --color-text:#0a0a0a;
+    --color-action: #ebebeb;
+    --color-action-hover: #fafafa;
+    --color-action-selected: #fff;
+    --color-trim: #5c5c5c;
+    --color-trim-2: #fff;
 };
-
 
 // Static colours
 $static-colors: (

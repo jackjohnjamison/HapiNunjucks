@@ -1,10 +1,19 @@
 .main-nav {
-    background: orange;
+    background: var(--color-trim);
     font-size: 18px;
     position: fixed;
     left: 0;
     right: 0;
     top: 0;
+    box-shadow: var(--shadow);
+
+    .wrapper {
+        padding: 0;
+    }
+
+    .main-nav--inner {
+        background: var(--color-action);
+    }
 
     .link-list {
         @extend .ul--no-bullets;
@@ -17,11 +26,30 @@
 
     .link-list__item a {
         display: block;
-        padding: var(--base-interval-1) var(--base-interval-2);
+        padding: var(--interval-1) var(--interval-2);
         text-decoration: none;
+        transition: background .3s ease-in-out;
+        color: var(--color-text);
+
+        &:hover,
+        &:focus {
+            background: var(--color-action-hover);
+        }
+
+        &:active {
+            background: var(--color-action-selected);
+        }
+
     }
 
     .link-list__item[aria-label="current page"] a {
-        background: red;
+        background: var(--color-action-selected);
+    }
+}
+
+@media (min-width: $screen-small) {
+    .main-nav--inner {
+        border-right: solid 1px var(--color-text);
+        border-left: solid 1px var(--color-text);
     }
 }
