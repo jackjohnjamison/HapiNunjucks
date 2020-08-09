@@ -851,6 +851,10 @@ img {
   border-top-left-radius: var(--interval-1);
   border-bottom-right-radius: var(--interval-1); }
 
+.inherit-border {
+  border: inherit;
+  border-radius: inherit; }
+
 .main-nav {
   background: var(--color-trim);
   font-size: 18px;
