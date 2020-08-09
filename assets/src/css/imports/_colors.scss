@@ -14,7 +14,10 @@
 // Static colours
 $static-colors: (
     github: #6e5494,
-    friendly-green: #79b47c
+    friendly-green: #79b47c,
+    twitter: #00aced,
+    pintrest: #e60023,
+    mcdonalds: #ffc72C,
 );
 
 @mixin colors($attribute) {

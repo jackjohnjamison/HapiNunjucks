@@ -1,9 +1,18 @@
 $maxColumns: 12;
 $gridGap: 20px;
 
+$spans: (
+    row: 'grid-row',
+    col: 'grid-column'
+);
+
 .grid {
     display: grid;
     grid-gap: $gridGap;
+}
+
+.grid--dense {
+    grid-auto-flow: dense;
 }
 
 @mixin grid($media: '') {
@@ -16,8 +25,10 @@ $gridGap: 20px;
 
 @mixin grid-span($media: '') {
     @for $i from 1 through $maxColumns {
-        &--span-#{$i}#{$media} {
-            grid-column: span $i;
+        @each $name, $span in $spans {
+            &--#{$name}-#{$i}#{$media} {
+                #{$span}: span $i;
+            }
         }
     }
 }
@@ -25,7 +36,7 @@ $gridGap: 20px;
 .grid {
     @include grid()
 }
-.grid {
+.grid-item {
     @include grid-span()
 }
 
@@ -33,7 +44,7 @@ $gridGap: 20px;
     .grid {
         @include grid($media: '-mobile')
     }
-    .grid {
+    .grid-item {
         @include grid-span($media: '-mobile')
     }
 }
@@ -42,7 +53,7 @@ $gridGap: 20px;
     .grid {
         @include grid($media: '-tablet')
     }
-    .grid {
+    .grid-item {
         @include grid-span($media: '-tablet')
     }
 }
@@ -51,7 +62,7 @@ $gridGap: 20px;
     .grid {
         @include grid($media: '-lap')
     }
-    .grid {
+    .grid-item {
         @include grid-span($media: '-lap')
     }
 }
@@ -60,7 +71,7 @@ $gridGap: 20px;
     .grid {
         @include grid($media: '-desk')
     }
-    .grid {
+    .grid-item {
         @include grid-span($media: '-desk')
     }
 }

@@ -60,6 +60,7 @@
 }
 
 $intervals: (
+    0: 0,
     5: 5px,
     10: 10px,
     20: 20px,
@@ -74,7 +75,7 @@ $intervals: (
 @mixin boundries($attribute) {
     @each $size, $units in $intervals {
         &-#{$size} {
-            #{$attribute}: $units;
+            #{$attribute}: $units!important;
         }
     }
 }

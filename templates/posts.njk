@@ -2,12 +2,20 @@
 
 {% block content %}
 
-    <section> 
+    {% set size = ['1', '2'] %}
+    {% set imageType = ["any", "animals", "arch", "nature", "people", "tech" ] %}
+    {% set entities = ['🌞', '🌌', '🌼', '🍁', '🍀', '🍹', '🎯', '🎼', '🐱', '🐳'] %}
+
+    <section class="grid grid--dense grid--col-4 grid--col-2-tablet grid--col-1-mobile"> 
         {% for post in model.data.posts %}
-            <article class="brick brick--woven">
-                <h3>{{post.title}}</h3>
-                <p>{{post.body}}</p>
-            </article>
+            {% set row = size | random %}
+                <article class="brick brick--woven grid-item--col-{{ size | random }} {% if row === '2' %}grid-item--row-2{% endif %} grid-item--col-1-mobile margin-bottom-0">
+                    <h3>{{ entities | random }} {{post.title}}</h3>
+                        {% if row === '2' %}
+                            {{ images.image("http://placeimg.com/500/300/" + imageType | random , class="full-width") }}
+                        {% endif %}
+                    <p>{{post.body}}</p>
+                </article>
         {% endfor %}    
     </section>
  
