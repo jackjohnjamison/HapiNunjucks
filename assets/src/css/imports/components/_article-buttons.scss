@@ -30,14 +30,14 @@
 }
 
 
-@media (min-width: $screen-small) {
-    .article-button--list {
-            float: right;
-    }
-
+@media (min-width: $screen-small-abv) {
     .article-button--tab {
         border-top-right-radius: 0;
         border-top-left-radius: 14px;
+    }
+
+    .article-button--list {
+            float: right;
     }
 
     .article-button {

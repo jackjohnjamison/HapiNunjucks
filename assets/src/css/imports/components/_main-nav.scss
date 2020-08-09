@@ -47,7 +47,7 @@
     }
 }
 
-@media (min-width: $screen-small) {
+@media (min-width: $screen-large-abv) {
     .main-nav--inner {
         border-right: solid 1px var(--color-text);
         border-left: solid 1px var(--color-text);

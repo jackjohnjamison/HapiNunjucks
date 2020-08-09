@@ -1,14 +1,66 @@
-.grid-col-2 {
+$maxColumns: 12;
+$gridGap: 20px;
+
+.grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
+    grid-gap: $gridGap;
 }
 
+@mixin grid($media: '') {
+    @for $i from 1 through $maxColumns {
+        &--col-#{$i}#{$media} {
+            grid-template-columns: repeat($i, 1fr);
+        }
+    }
+}
 
-@media (min-width: $screen-small) {
-    .grid-col-2--tablet {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 20px;
+@mixin grid-span($media: '') {
+    @for $i from 1 through $maxColumns {
+        &--span-#{$i}#{$media} {
+            grid-column: span $i;
+        }
+    }
+}
+
+.grid {
+    @include grid()
+}
+.grid {
+    @include grid-span()
+}
+
+@media (max-width: $screen-small){
+    .grid {
+        @include grid($media: '-mobile')
+    }
+    .grid {
+        @include grid-span($media: '-mobile')
+    }
+}
+
+@media (min-width: $screen-small-abv) and (max-width: $screen-medium) {
+    .grid {
+        @include grid($media: '-tablet')
+    }
+    .grid {
+        @include grid-span($media: '-tablet')
+    }
+}
+
+@media (min-width: $screen-medium-abv) and (max-width: $screen-large) {
+    .grid {
+        @include grid($media: '-lap')
+    }
+    .grid {
+        @include grid-span($media: '-lap')
+    }
+}
+
+@media (min-width: $screen-large-abv) {
+    .grid {
+        @include grid($media: '-desk')
+    }
+    .grid {
+        @include grid-span($media: '-desk')
     }
 }
