@@ -19,7 +19,10 @@ Docker server side commands:
         docker pull johnjamison/hapi-nun
 
     Run the image:
-        docker run -p 3000:3000 johnjamison/hapi-nun
+        local:
+            docker run -p 3000:3000 johnjamison/hapi-nun
+        live:
+            docker run -p 80:80 johnjamison/hapi-nun
 
 
 Scripts:

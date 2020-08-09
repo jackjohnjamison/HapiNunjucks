@@ -7,6 +7,41 @@ const Nunjucks = require('nunjucks')
 const Vision = require('@hapi/vision')
 const Routes = require('./lib/routes.js')
 
+///////////////////////////////////////////////////////////////////////
+///// There is some really ugly stuff here getting the port from a -p or -port argument
+
+let portNumber = 3000
+const myArgs = process.argv.slice(2)
+
+function setPort(i) {
+    let portArgument
+    try {
+        portArgument = parseInt(myArgs[i + 1])
+        if(portArgument) {
+            portNumber = portArgument
+        } else {
+            console.error('Invalid port number')
+        }
+    } catch {
+        console.error('Valid port number not supplied')
+    }
+}
+
+for (let [i, arg] of myArgs.entries()) {
+    switch (arg) {
+    case '-port':
+        setPort(i)
+        break;
+
+    case '-p':
+        setPort(i)
+        break;
+
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
 
 const internals = {
     templatePath: '.'
@@ -25,7 +60,7 @@ internals.rootHandler = function (request, h) {
 
 internals.main = async function () {
 
-    const server = Hapi.Server({ port: 3000 })
+    const server = Hapi.Server({ port: portNumber })
 
     await server.register( [
         Inert,

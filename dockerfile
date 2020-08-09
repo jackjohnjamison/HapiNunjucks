@@ -5,6 +5,6 @@ COPY package.json /app
 RUN npm install
 COPY . /app
 
-CMD node index.js
+CMD node server.js -p 80
 
-EXPOSE 3000
+EXPOSE 80
