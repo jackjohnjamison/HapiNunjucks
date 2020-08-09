@@ -1,13 +1,43 @@
 :root {
+  --color-action-h: 0;
+  --color-action-s: 0%;
+  --color-action-l: 0%;
+  --color-action-a: 1;
+  --color-action-nav: hsla(
+            var(--color-action-h),
+            var(--color-action-s),
+            calc( var(--color-action-l) + 90% ), 
+            var(--color-action-a)
+        );
+  --color-action-hover: hsla(
+            var(--color-action-h),
+            var(--color-action-s),
+            calc( var(--color-action-l) + 96% ), 
+            var(--color-action-a)
+        );
+  --color-action-selected: hsla(
+            var(--color-action-h),
+            var(--color-action-s),
+            calc( var(--color-action-l) + 98% ), 
+            var(--color-action-a)
+        );
+  --color-action-border: hsla(
+            var(--color-action-h),
+            var(--color-action-s),
+            calc( var(--color-action-l) + 60% ), 
+            var(--color-action-a)
+        );
+  --color-action-trim: hsla(
+            var(--color-action-h),
+            var(--color-action-s),
+            calc( var(--color-action-l) + 66% ), 
+            var(--color-action-a)
+        );
   --color-body: #f2f2f2;
   --color-brick: #fff;
   --color-brick-border: #ccc;
   --color-text:#0a0a0a;
-  --color-action: #ebebeb;
-  --color-action-hover: #fafafa;
-  --color-action-selected: #fff;
-  --color-trim: #5c5c5c;
-  --color-trim-2: #fff; }
+  --color-trim: #5c5c5c; }
 
 .font-color--github {
   color: #6e5494; }
@@ -856,7 +886,7 @@ img {
   border-radius: inherit; }
 
 .main-nav {
-  background: var(--color-trim);
+  background: var(--color-action-trim);
   font-size: 18px;
   position: fixed;
   left: 0;
@@ -866,7 +896,7 @@ img {
   .main-nav .wrapper {
     padding: 0; }
   .main-nav .main-nav--inner {
-    background: var(--color-action); }
+    background: var(--color-action-nav); }
   .main-nav .link-list {
     display: block; }
   .main-nav .link-list__item {
@@ -886,8 +916,8 @@ img {
 
 @media (min-width: 1201px) {
   .main-nav--inner {
-    border-right: solid 1px var(--color-text);
-    border-left: solid 1px var(--color-text); } }
+    border-right: solid 1px var(--color-action-border);
+    border-left: solid 1px var(--color-action-border); } }
 
 .article-button--tab {
   border: solid 2px #000;

@@ -1,5 +1,5 @@
 .main-nav {
-    background: var(--color-trim);
+    background: var(--color-action-trim);
     font-size: 18px;
     position: fixed;
     left: 0;
@@ -12,7 +12,7 @@
     }
 
     .main-nav--inner {
-        background: var(--color-action);
+        background: var(--color-action-nav);
     }
 
     .link-list {
@@ -49,7 +49,7 @@
 
 @media (min-width: $screen-large-abv) {
     .main-nav--inner {
-        border-right: solid 1px var(--color-text);
-        border-left: solid 1px var(--color-text);
+        border-right: solid 1px var(--color-action-border);
+        border-left: solid 1px var(--color-action-border);
     }
 }

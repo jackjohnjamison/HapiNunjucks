@@ -1,15 +1,51 @@
 // CSS variable colours
+@mixin var-colors($color) {
+    $name: map-get($color, name);
+    $h: map-get($color, h);
+    $s: map-get($color, s);
+    $l: map-get($color, l);
+    $a: map-get($color, a);
+    --color-#{$name}-h: #{$h};
+    --color-#{$name}-s: #{$s};
+    --color-#{$name}-l: #{$l};
+    --color-#{$name}-a: #{$a};
+    $variantions: map-get($color, variations);
+    @each $variant, $lightness in $variantions {
+        --color-#{$name}-#{$variant}: hsla(
+            var(--color-#{$name}-h),
+            var(--color-#{$name}-s),
+            calc( var(--color-#{$name}-l) + #{$lightness} ), 
+            var(--color-#{$name}-a)
+        );
+    }
+}
+
+$action: (
+    name: 'action',
+    h: 0,
+    s: 0%,
+    l: 0%,
+    a: 1,
+    variations: (
+        nav: 90%,
+        hover: 96%,
+        selected: 98%,
+        border: 60%,
+        trim: 66%
+    )
+);
+
 :root {
+    @include var-colors($action);
+
     --color-body: #f2f2f2;
     --color-brick: #fff;
     --color-brick-border: #ccc;
     --color-text:#0a0a0a;
-    --color-action: #ebebeb;
-    --color-action-hover: #fafafa;
-    --color-action-selected: #fff;
+
     --color-trim: #5c5c5c;
-    --color-trim-2: #fff;
-};
+}
+
 
 // Static colours
 $static-colors: (
