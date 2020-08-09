@@ -42,54 +42,48 @@ for (let [i, arg] of myArgs.entries()) {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-
 const internals = {
     templatePath: '.'
 }
 
 internals.rootHandler = function (request, h) {
-
     const relativePath = Path.relative(`${__dirname}/../..`, `${__dirname}/templates/${internals.templatePath}`)
-
-    return h.view('index', {
-        title: `Running ${relativePath} | hapi ${request.server.version}`,
-        message: 'Hello Nunjucks!'
-    })
+    // return h.view('index', {
+    //     title: `Running ${relativePath} | hapi ${request.server.version}`,
+    //     message: 'Hello Nunjucks!'
+    // })
 };
 
 
 internals.main = async function () {
-
     const server = Hapi.Server({ port: portNumber })
-
-    await server.register( [
+    await server.register([
         Inert,
         Vision
-    ] )
-
+    ])
     server.views({
         engines: {
             njk: {
                 compile: (src, options) => {
-
                     const template = Nunjucks.compile(src, options.environment)
-
                     return (context) => {
-
                         return template.render(context)
                     }
                 },
-
                 prepare: (options, next) => {
-
-                    options.compileOptions.environment = Nunjucks.configure(options.path, { watch: false });
+                    options.compileOptions.environment = Nunjucks.configure(options.path, {
+                        //* Nunjucks Configs
+                        throwOnUndefined: true,
+                        trimBlocks: true,
+                        lstripBlocks: true,
+                        watch: true
+                    });
                     return next();
                 }
             }
         },
         path: `${__dirname}/templates`
     })
-
     server.route(Routes.routes)
 
     await server.start()

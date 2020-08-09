@@ -1,4 +1,4 @@
-{% macro list(links, classes = "", external = false, currentPage) %}
+{% macro list(links=[], classes="", external=false, currentPage="") %}
     <ul class="link-list cf {{classes}}">
         {% for link in links %}
             <li class="link-list__item link-list__item--{{link.name}}" {% if link.name === currentPage %}aria-label="current page"{% endif %}>
@@ -8,7 +8,7 @@
     </ul>
 {% endmacro %}
 
-{% macro cubbycon(href, text, class, entity, external = false, icon_class) %}
+{% macro cubbycon(href="", text="", class="", entity="", external=false, icon_class="") %}
     <li class="article-button--tab">
         <a class="article-button display-block {{class}}" href="{{href}}" {% if external %}target="_blank"{% endif %}>
             <span class="article-button__text">
@@ -25,7 +25,7 @@
     </li>
 {% endmacro %}
 
-{% macro external(href, text) %}<a href="{{href}}" target="_blank">{{ text }}{{ external_text() }}{{ external_icon() }}</a>{% endmacro %}
+{% macro external(href="", text="") %}<a href="{{href}}" target="_blank">{{ text }}{{ external_text() }}{{ external_icon() }}</a>{% endmacro %}
 
 {% macro external_text() %}<span class="screen-reader">&nbsp;opens in a new windwon</span>{% endmacro %}
 

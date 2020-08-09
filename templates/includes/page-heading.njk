@@ -1,6 +1,6 @@
 <header>
     <div class="brick brick--heading">
-        <h1 class="margin-bottom-5">{{ model.heading }}</h1>
-        <p class="margin-top-5 margin-bottom-40">{{ model.message }}</p>
+        {% if model.heading %}<h1 class="margin-bottom-5">{{ model.heading }}</h1>{% endif %}
+        {% if model.message %}<p class="margin-top-5 margin-bottom-40">{{ model.message }}</p>{% endif %}
     </div>
 </header>
