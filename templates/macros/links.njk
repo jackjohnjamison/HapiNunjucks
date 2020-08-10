@@ -1,8 +1,8 @@
 {% macro list(links=[], classes="", external=false, currentPage="") %}
     <ul class="link-list cf {{classes}}">
         {% for link in links %}
-            <li class="link-list__item link-list__item--{{link.name}}" {% if link.name === currentPage %}aria-label="current page"{% endif %}>
-                <a href="{{link.href}}" {% if external %}target="_blank"{% endif %}>{{ link.text }}{% if external %}{{ external_text() }}{% endif %}</a>
+            <li class="link-list__item link-list__item--{{link.name}} {% if link.name === currentPage %}link-list__item--current-page{% endif %}">
+                <a href="{{link.href}}" {% if external %}target="_blank"{% endif %}>{{ link.text }}{% if external %}{{ external_text() }}{% endif %}{% if link.name === currentPage %}<span class="screen-reader"> current page</span>{% endif %}</a>
             </li>
         {% endfor %}
     </ul>
@@ -20,7 +20,7 @@
                     {{ external_text() }}
                 {% endif %}
             </span>
-            <span class="icon icon--article-button {{icon_class}}">{{ entity }}</span>
+            <span class="icon icon--article-button {{icon_class}}" aria-hidden="true">{{ entity }}</span>
         </a>
     </li>
 {% endmacro %}

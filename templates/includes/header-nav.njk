@@ -1,7 +1,9 @@
 <nav class="main-nav" aria-label="main">
     <div class="wrapper">
-        <div class="main-nav--inner">
+        <div class="main-nav__inner">
+            <button class="js-accordion burger-menu"><span aria-hidden="true">&#x2630;</span><span class="screen-reader">menu</span></button>
             {% if model.links %}{{ links.list([model.links.home, model.links.posts, model.links.graveyard, model.links.about], currentPage = model.pageName) }}{% endif %}
+            <div class="mobile-nav__foot-cap"></div>
         </div>
     </div>
 </nav>

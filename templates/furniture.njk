@@ -12,15 +12,16 @@
         <meta name='John "Jack" Jamison' content="">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+        {# Adds the js class to the html root before the style sheet is loaded #}
+        <script>document.documentElement.classList.add('js')</script>
+        
         <link rel="stylesheet" href="/css/styles.css">
-
         {# <style> {{ model.styles.styles | safe }} </style> #}
+
     </head>
 
     <body class="page--{{model.pageName}}">
-
         {% block body %}
-
             {% block header_nav %}
                 {% include 'includes/header-nav.njk' %}
             {% endblock %}
@@ -45,6 +46,8 @@
                     <script> const modelDebug = {{debug | safe}} </script>
                     <script src="js/debug.js" defer></script>
                 {% endif %}
+
+                <script src="js/site.js" defer></script>
             {% endblock %}
 
             {% block additional_scripts %}{% endblock %}

@@ -27,11 +27,13 @@ $action: (
     l: 0%,
     a: 1,
     variations: (
-        nav: 90%,
-        hover: 96%,
-        selected: 98%,
+        nav: 86%,
+        hover: 98%,
+        selected: 94%,
         border: 60%,
-        trim: 66%
+        trim: 66%,
+        trim-dark: 28%,
+        darkest: 18%
     )
 );
 

@@ -6,7 +6,7 @@
     {% set imageType = ["any", "animals", "arch", "nature", "people", "tech" ] %}
     {% set entities = ['🌞', '🌌', '🌼', '🍁', '🍀', '🍹', '🎯', '🎼', '🐱', '🐳'] %}
 
-    <section class="grid grid--dense grid--col-4 grid--col-2-tablet grid--col-1-mobile"> 
+    <div class="grid grid--dense grid--col-4 grid--col-2-tablet grid--col-1-mobile"> 
         {% for post in model.data.posts %}
             {% set row = size | random %}
                 <article class="brick brick--woven grid-item--col-{{ size | random }} {% if row === '2' %}grid-item--row-2{% endif %} grid-item--col-1-mobile margin-bottom-0">
@@ -17,7 +17,7 @@
                     <p>{{post.body}}</p>
                 </article>
         {% endfor %}    
-    </section>
+    </div>
  
 {% endblock %}
 
