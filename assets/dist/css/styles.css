@@ -934,7 +934,7 @@ img {
     border-right: solid 1px var(--color-action-border);
     border-left: solid 1px var(--color-action-border); } }
 
-.burger-menu {
+.menu-icon {
   display: none; }
 
 .mobile-nav__foot-cap {
@@ -947,20 +947,20 @@ img {
     position: fixed; }
   .js .main-nav__inner {
     background: var(--color-action-trim); }
-  .js .burger-menu {
-    display: block;
+  .js .menu-icon {
+    display: inline-block;
     border-radius: 5px;
     margin: 5px;
     color: var(--color-action-trim-dark);
     border: solid 3px var(--color-action-trim-dark);
-    background: var(--color-action-nav);
+    background: var(--color-action-selected);
     cursor: pointer;
     font-family: icons;
     font-size: 32px;
     padding: 2px 4px;
     transition: background .3s ease-in-out;
     position: relative; }
-    .js .burger-menu:after {
+    .js .menu-icon:after {
       content: "\78";
       position: absolute;
       left: 0;
@@ -969,17 +969,19 @@ img {
       bottom: 0;
       line-height: 36px;
       color: var(--color-action-hover);
-      background: var(--color-action-trim);
+      background: var(--color-action-trim-dark);
       opacity: 0;
       transition: opacity .3s ease-in-out, background .3s ease-in-out; }
-    .js .burger-menu:hover, .js .burger-menu:focus {
+    .js .menu-icon:hover, .js .menu-icon:focus {
       background: var(--color-action-hover); }
-      .js .burger-menu:hover:after, .js .burger-menu:focus:after {
-        background: var(--color-action-trim-dark); }
-    .js .burger-menu:active {
-      background: var(--color-action-selected); }
-      .js .burger-menu:active:after {
+      .js .menu-icon:hover:after, .js .menu-icon:focus:after {
         background: var(--color-action-darkest); }
+    .js .menu-icon:active {
+      background: var(--color-action-selected); }
+      .js .menu-icon:active:after {
+        background: var(--color-action-darkest); }
+  .js .menu-icon#js-settings {
+    line-height: 32px; }
   .js .main-nav .link-list {
     background: var(--color-action-nav);
     border-top: solid 3px var(--color-action-nav); }
@@ -991,16 +993,16 @@ img {
   .mobile-nav__foot-cap {
     display: block;
     border-bottom: solid 3px var(--color-action-trim-dark); }
-  .js .main-nav .burger-menu[aria-expanded="true"]:after {
+  .js .main-nav .menu-icon[aria-expanded="true"]:after {
     opacity: 1; }
-  .js .main-nav .burger-menu[aria-expanded="true"] + .link-list {
+  .js .main-nav .menu-icon[aria-expanded="true"] ~ .link-list {
     background: var(--color-action-trim);
     border-top: none; }
-    .js .main-nav .burger-menu[aria-expanded="true"] + .link-list .link-list__item {
+    .js .main-nav .menu-icon[aria-expanded="true"] ~ .link-list .link-list__item {
       border-top: solid 3px var(--color-action-trim); }
-      .js .main-nav .burger-menu[aria-expanded="true"] + .link-list .link-list__item:first-child {
+      .js .main-nav .menu-icon[aria-expanded="true"] ~ .link-list .link-list__item:first-child {
         border-top: none; }
-      .js .main-nav .burger-menu[aria-expanded="true"] + .link-list .link-list__item a {
+      .js .main-nav .menu-icon[aria-expanded="true"] ~ .link-list .link-list__item a {
         display: block; } }
 
 .article-button--tab {

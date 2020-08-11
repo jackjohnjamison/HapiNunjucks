@@ -54,7 +54,7 @@
 
 ///////////////// Mobile Nav
 
-.burger-menu {
+.menu-icon {
     display: none;
 }
 
@@ -75,13 +75,13 @@
         background: var(--color-action-trim)
     }
 
-    .js .burger-menu {
-        display: block;
+    .js .menu-icon {
+        display: inline-block;
         border-radius: 5px;
         margin: 5px;
         color: var(--color-action-trim-dark);
         border: solid 3px var(--color-action-trim-dark);
-        background: var(--color-action-nav);
+        background: var(--color-action-selected);
         cursor: pointer;
         font-family: icons;
         font-size: 32px;
@@ -98,7 +98,7 @@
             bottom: 0;
             line-height: 36px;
             color: var(--color-action-hover);
-            background: var(--color-action-trim);
+            background: var(--color-action-trim-dark);
             opacity: 0;
             transition: opacity .3s ease-in-out, background .3s ease-in-out;
         }
@@ -107,7 +107,7 @@
         &:focus {
             background: var(--color-action-hover);
             &:after {
-                background: var(--color-action-trim-dark);
+                background: var(--color-action-darkest);
             }
         }
     
@@ -117,6 +117,10 @@
                 background: var(--color-action-darkest);
             }
         }
+    }
+
+    .js .menu-icon#js-settings { // Delete if posible
+        line-height: 32px;
     }
 
     .js .main-nav .link-list {
@@ -138,11 +142,11 @@
         border-bottom: solid 3px var(--color-action-trim-dark);
     }
 
-    .js .main-nav .burger-menu[aria-expanded="true"]:after {
+    .js .main-nav .menu-icon[aria-expanded="true"]:after {
         opacity: 1;
     }
 
-    .js .main-nav .burger-menu[aria-expanded="true"] + .link-list {
+    .js .main-nav .menu-icon[aria-expanded="true"] ~ .link-list {
         background: var(--color-action-trim);
         border-top: none;
 

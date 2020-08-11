@@ -12,12 +12,35 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
+function toggleAttribute(element, attribute) {
+  element.setAttribute(attribute, !(element.getAttribute(attribute) == "true"));
+}
+
+function ariaExpandOnClick(element) {
+  element.setAttribute('aria-expanded', 'false');
+
+  element.onclick = function () {
+    toggleAttribute(element, 'aria-expanded');
+  };
+} // Burger Menu
+
+
+var mainNav = document.getElementById('js-main-nav');
+var burgerMenu = document.getElementById('js-burger-menu');
+
+if (mainNav && burgerMenu) {
+  ariaExpandOnClick(burgerMenu);
+
+  document.onclick = function (event) {
+    if (!mainNav.contains(event.target)) {
+      burgerMenu.setAttribute('aria-expanded', 'false');
+    }
+  };
+} // Accordions
+
+
 var accordions = _toConsumableArray(document.getElementsByClassName('js-accordion'));
 
 accordions.forEach(function (accordion) {
-  accordion.setAttribute('aria-expanded', 'false');
-
-  accordion.onclick = function () {
-    accordion.setAttribute('aria-expanded', !(accordion.getAttribute('aria-expanded') == "true"));
-  };
+  ariaExpandOnClick(accordion);
 });
