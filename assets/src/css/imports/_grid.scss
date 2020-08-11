@@ -34,13 +34,13 @@ $spans: (
 }
 
 .grid {
-    @include grid()
+    @include grid();
 }
 .grid-item {
-    @include grid-span()
+    @include grid-span();
 }
 
-@media (max-width: $screen-small){
+@include mobile {
     .grid {
         @include grid($media: '-mobile')
     }
@@ -49,7 +49,7 @@ $spans: (
     }
 }
 
-@media (min-width: $screen-small-abv) and (max-width: $screen-medium) {
+@include tablet {
     .grid {
         @include grid($media: '-tablet')
     }
@@ -58,7 +58,7 @@ $spans: (
     }
 }
 
-@media (min-width: $screen-medium-abv) and (max-width: $screen-large) {
+@include lap {
     .grid {
         @include grid($media: '-lap')
     }
@@ -67,7 +67,7 @@ $spans: (
     }
 }
 
-@media (min-width: $screen-large-abv) {
+@include desk {
     .grid {
         @include grid($media: '-desk')
     }

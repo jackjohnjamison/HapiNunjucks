@@ -45,7 +45,7 @@
     }
 }
 
-@media (min-width: $screen-large-abv) {
+@include desk {
     .main-nav--inner {
         border-right: solid 1px var(--color-action-border);
         border-left: solid 1px var(--color-action-border);
@@ -62,7 +62,7 @@
     display: none;
 }
 
-@media (max-width: $screen-small) {
+@include mobile {
     .main-nav {
         position: static;
     }
@@ -85,18 +85,18 @@
         cursor: pointer;
         font-family: icons;
         font-size: 32px;
-        padding: 2px 4px;
+        padding: 4px;
         transition: background .3s ease-in-out;
         position: relative;
         
         &:after {
             content: "\78";
             position: absolute;
+            line-height: 40px;
             left: 0;
             right: 0;
             top: 0;
             bottom: 0;
-            line-height: 36px;
             color: var(--color-action-hover);
             background: var(--color-action-trim-dark);
             opacity: 0;
@@ -125,14 +125,18 @@
 
     .js .main-nav .link-list {
         background: var(--color-action-nav);
-        border-top: solid 3px var(--color-action-nav);
+        transition: height .3s ease-in-out;
+        overflow: hidden;
 
         .link-list__item {
             float: none;
+            border-top: solid 3px var(--color-action-trim); 
+            &:first-child {
+                border-top: none;
+            }
         }
 
         .link-list__item a {
-            display: none;
             padding-left: 8px;
         }
     }
@@ -151,10 +155,7 @@
         border-top: none;
 
         .link-list__item {
-            border-top: solid 3px var(--color-action-trim); 
-            &:first-child {
-                border-top: none;
-            }
+
         
             a {
                 display: block;

@@ -12,6 +12,46 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
+// Burger Menu
+var mainNav = document.getElementById('js-main-nav');
+var burgerMenu = document.getElementById('js-burger-menu');
+var menuLinks = mainNav.querySelector('.link-list');
+console.log(mainNav, burgerMenu, menuLinks);
+
+if (mainNav && burgerMenu && menuLinks) {
+  var closeMenu = function closeMenu() {
+    menuLinks.style.height = '0px';
+    burgerMenu.setAttribute('aria-expanded', 'false');
+    setTimeout(function () {
+      menuLinks.style.display = 'none';
+    }, 300);
+  };
+
+  var menuLinksOpenHeight = '176px'; //menuLinks.style.height
+
+  menuLinks.style.display = 'none';
+  menuLinks.style.height = '0px';
+  menuLinks.style.display = 'block';
+  burgerMenu.setAttribute('aria-expanded', 'false');
+
+  burgerMenu.onclick = function () {
+    if (burgerMenu.getAttribute('aria-expanded') == "true") {
+      closeMenu();
+    } else {
+      menuLinks.style.display = 'block';
+      burgerMenu.setAttribute('aria-expanded', 'true');
+      menuLinks.style.height = menuLinksOpenHeight;
+    }
+  };
+
+  document.onclick = function (event) {
+    if (!mainNav.contains(event.target)) {
+      closeMenu();
+    }
+  };
+} // Accordions
+
+
 function toggleAttribute(element, attribute) {
   element.setAttribute(attribute, !(element.getAttribute(attribute) == "true"));
 }
@@ -22,22 +62,7 @@ function ariaExpandOnClick(element) {
   element.onclick = function () {
     toggleAttribute(element, 'aria-expanded');
   };
-} // Burger Menu
-
-
-var mainNav = document.getElementById('js-main-nav');
-var burgerMenu = document.getElementById('js-burger-menu');
-
-if (mainNav && burgerMenu) {
-  ariaExpandOnClick(burgerMenu);
-
-  document.onclick = function (event) {
-    if (!mainNav.contains(event.target)) {
-      burgerMenu.setAttribute('aria-expanded', 'false');
-    }
-  };
-} // Accordions
-
+}
 
 var accordions = _toConsumableArray(document.getElementsByClassName('js-accordion'));
 
