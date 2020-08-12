@@ -14,7 +14,6 @@
     .main-nav__inner {
         background: var(--color-action-nav);
         position: relative;
-        z-index: 1;
     }
 
     .link-list {
@@ -73,8 +72,11 @@
         position: fixed;
     }
 
-    .js .main-nav__inner {
-        background: var(--color-action-trim)
+    .js .main-nav__burger-menu-wrapper {
+        z-index: 1;
+        position: absolute;
+        background: var(--color-action-trim);
+        width: 100%;
     }
 
     .js .menu-icon {
@@ -121,8 +123,10 @@
         }
     }
 
-    .js .menu-icon#js-settings { // Delete if posible
-        line-height: 32px;
+    .js .menu-icon#js-settings {
+        z-index: 1;
+        position: absolute;
+        right: 0;
     }
 
     .js .main-nav .link-list {

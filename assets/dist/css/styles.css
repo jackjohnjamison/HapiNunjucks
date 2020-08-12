@@ -913,8 +913,7 @@ img {
     padding: 0; }
   .main-nav .main-nav__inner {
     background: var(--color-action-nav);
-    position: relative;
-    z-index: 1; }
+    position: relative; }
   .main-nav .link-list__item {
     float: left; }
   .main-nav .link-list__item a {
@@ -947,8 +946,11 @@ img {
     position: static; }
   .js .main-nav {
     position: fixed; }
-  .js .main-nav__inner {
-    background: var(--color-action-trim); }
+  .js .main-nav__burger-menu-wrapper {
+    z-index: 1;
+    position: absolute;
+    background: var(--color-action-trim);
+    width: 100%; }
   .js .menu-icon {
     display: inline-block;
     border-radius: 5px;
@@ -983,7 +985,9 @@ img {
       .js .menu-icon:active:after {
         background: var(--color-action-darkest); }
   .js .menu-icon#js-settings {
-    line-height: 32px; }
+    z-index: 1;
+    position: absolute;
+    right: 0; }
   .js .main-nav .link-list {
     background: var(--color-action-nav);
     transition: bottom .3s ease-in-out;
