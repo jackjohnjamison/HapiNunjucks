@@ -16,31 +16,38 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 var mainNav = document.getElementById('js-main-nav');
 var burgerMenu = document.getElementById('js-burger-menu');
 var menuLinks = mainNav.querySelector('.link-list');
-console.log(mainNav, burgerMenu, menuLinks);
 
 if (mainNav && burgerMenu && menuLinks) {
-  var closeMenu = function closeMenu() {
-    menuLinks.style.height = '0px';
-    burgerMenu.setAttribute('aria-expanded', 'false');
-    setTimeout(function () {
-      menuLinks.style.display = 'none';
-    }, 300);
+  var setTabbing = function setTabbing(tabIndex) {
+    links.forEach(function (link) {
+      link.setAttribute('tabindex', tabIndex);
+    });
   };
 
-  var menuLinksOpenHeight = '176px'; //menuLinks.style.height
+  var openMenu = function openMenu() {
+    menuLinks.style.bottom = '-' + menuLinksOpenHeight;
+    burgerMenu.setAttribute('aria-expanded', 'true');
+    setTabbing('0');
+  };
 
-  menuLinks.style.display = 'none';
-  menuLinks.style.height = '0px';
-  menuLinks.style.display = 'block';
-  burgerMenu.setAttribute('aria-expanded', 'false');
+  var closeMenu = function closeMenu() {
+    menuLinks.style.bottom = '-' + menuLinksBorderBottomHeight;
+    burgerMenu.setAttribute('aria-expanded', 'false');
+    setTabbing('-1');
+  };
+
+  var menuLinksOpenHeight = menuLinks.clientHeight + 'px';
+  var menuLinksBorderBottomHeight = window.getComputedStyle(menuLinks).borderBottomWidth;
+
+  var links = _toConsumableArray(menuLinks.querySelectorAll('.link-list__item a'));
+
+  setTabbing('-1');
 
   burgerMenu.onclick = function () {
     if (burgerMenu.getAttribute('aria-expanded') == "true") {
       closeMenu();
     } else {
-      menuLinks.style.display = 'block';
-      burgerMenu.setAttribute('aria-expanded', 'true');
-      menuLinks.style.height = menuLinksOpenHeight;
+      openMenu();
     }
   };
 

@@ -880,7 +880,7 @@ img {
   border-top-right-radius: 0;
   border-bottom-right-radius: var(--interval-1);
   margin-bottom: var(--interval-2);
-  padding-top: 40px; }
+  padding-top: 60px; }
 
 @media (max-width: 600px) {
   html:not(.js) .brick--heading {
@@ -912,7 +912,9 @@ img {
   .main-nav .wrapper {
     padding: 0; }
   .main-nav .main-nav__inner {
-    background: var(--color-action-nav); }
+    background: var(--color-action-nav);
+    position: relative;
+    z-index: 1; }
   .main-nav .link-list__item {
     float: left; }
   .main-nav .link-list__item a {
@@ -984,8 +986,11 @@ img {
     line-height: 32px; }
   .js .main-nav .link-list {
     background: var(--color-action-nav);
-    transition: height .3s ease-in-out;
-    overflow: hidden; }
+    transition: bottom .3s ease-in-out;
+    position: absolute;
+    bottom: -3px;
+    width: 100%;
+    border-bottom: solid 3px var(--color-action-trim-dark); }
     .js .main-nav .link-list .link-list__item {
       float: none;
       border-top: solid 3px var(--color-action-trim); }
@@ -993,9 +998,6 @@ img {
         border-top: none; }
     .js .main-nav .link-list .link-list__item a {
       padding-left: 8px; }
-  .mobile-nav__foot-cap {
-    display: block;
-    border-bottom: solid 3px var(--color-action-trim-dark); }
   .js .main-nav .menu-icon[aria-expanded="true"]:after {
     opacity: 1; }
   .js .main-nav .menu-icon[aria-expanded="true"] ~ .link-list {
@@ -1029,7 +1031,7 @@ img {
   vertical-align: middle;
   transition: transform .3s ease-in-out; }
 
-@tablet--above {
+@media (min-width: 601px) {
   .article-button--tab {
     border-top-right-radius: 0;
     border-top-left-radius: 14px; }

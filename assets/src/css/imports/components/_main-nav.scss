@@ -13,6 +13,8 @@
 
     .main-nav__inner {
         background: var(--color-action-nav);
+        position: relative;
+        z-index: 1;
     }
 
     .link-list {
@@ -125,8 +127,11 @@
 
     .js .main-nav .link-list {
         background: var(--color-action-nav);
-        transition: height .3s ease-in-out;
-        overflow: hidden;
+        transition: bottom .3s ease-in-out;
+        position: absolute;
+        bottom: -3px;
+        width: 100%;
+        border-bottom: solid 3px var(--color-action-trim-dark);
 
         .link-list__item {
             float: none;
@@ -141,11 +146,6 @@
         }
     }
 
-    .mobile-nav__foot-cap {
-        display: block;
-        border-bottom: solid 3px var(--color-action-trim-dark);
-    }
-
     .js .main-nav .menu-icon[aria-expanded="true"]:after {
         opacity: 1;
     }
@@ -155,7 +155,6 @@
         border-top: none;
 
         .link-list__item {
-
         
             a {
                 display: block;
