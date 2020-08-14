@@ -1,47 +1,53 @@
-// Burger Menu
-const mainNav = document.getElementById('js-main-nav')
-const burgerMenu = document.getElementById('js-burger-menu')
-const menuLinks = mainNav.querySelector('.link-list')
+// Slide menu
+function slideMenu(containerID, buttonID, linksID) {
+    const container = document.getElementById(containerID)
+    const button = document.getElementById(buttonID)
+    const links = document.getElementById(linksID)
 
-if (mainNav && burgerMenu && menuLinks) {
-    const menuLinksOpenHeight = menuLinks.clientHeight + 'px'
-    const menuLinksBorderBottomHeight = window.getComputedStyle(menuLinks).borderBottomWidth
-    const links = [...menuLinks.querySelectorAll('.link-list__item a')]
-
-    function setTabbing(tabIndex) {
-        links.forEach(link => {
-            link.setAttribute('tabindex', tabIndex)
-        })
-    }
-
-    setTabbing('-1')
-
-    function openMenu() {
-        menuLinks.style.bottom = '-' + menuLinksOpenHeight
-        burgerMenu.setAttribute('aria-expanded', 'true')
-        setTabbing('0')
-    }
-    function closeMenu() {
-        menuLinks.style.bottom = '-' + menuLinksBorderBottomHeight
-        burgerMenu.setAttribute('aria-expanded', 'false')
-        setTabbing('-1')
-    }
-
-    burgerMenu.onclick = () => {
-        if (burgerMenu.getAttribute('aria-expanded') == "true") {
-            closeMenu()
-        } else {
-            openMenu()
+    if (container && button && links) {
+        const linksBorderBottomHeight = window.getComputedStyle(links).borderBottomWidth
+        const linksOpenHeight = links.clientHeight + 4 + 'px'
+        const linkArray = [...links.querySelectorAll('.link-list__item a')]
+    
+        function setTabbing(tabIndex) {
+            linkArray.forEach(link => {
+                link.setAttribute('tabindex', tabIndex)
+            })
         }
-    }
-
-    document.onclick = (event) => {
-        if (!mainNav.contains(event.target)) {
-            closeMenu()
+    
+        setTabbing('-1')
+    
+        function openMenu() {
+            links.style.bottom = '-' + linksOpenHeight
+            button.setAttribute('aria-expanded', 'true')
+            setTabbing('0')
+        }
+        function closeMenu() {
+            links.style.bottom = '-' + linksBorderBottomHeight
+            button.setAttribute('aria-expanded', 'false')
+            setTabbing('-1')
+        }
+    
+        button.onclick = () => {
+            if (button.getAttribute('aria-expanded') == "true") {
+                closeMenu()
+            } else {
+                openMenu()
+            }
+        }
+    
+        document.onclick = (event) => {
+            if (!container.contains(event.target)) {
+                closeMenu()
+            }
         }
     }
 }
 
+slideMenu('js-main-nav', 'js-burger-menu', 'js-burger-menu__links')
+slideMenu('js-main-nav', 'js-settings-menu', 'js-settings-menu__links')
+
+//////////////////////////////////////////////////////////////////////////////
 
 // Accordions
 function toggleAttribute(element, attribute) {

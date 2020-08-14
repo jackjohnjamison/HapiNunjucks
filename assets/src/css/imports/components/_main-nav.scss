@@ -1,24 +1,16 @@
 .main-nav {
     position: fixed;
-    background: var(--color-action-trim);
+    background: var(--color-action-nav);
     font-size: 18px;
     left: 0;
     right: 0;
     top: 0;
     box-shadow: var(--shadow);
+    border-bottom: solid 1px var(--color-action-border);
 
     .wrapper {
         padding: 0;
-    }
-
-    .main-nav__inner {
-        background: var(--color-action-nav);
-        position: relative;
-        z-index: 1;
-    }
-
-    .link-list {
-        @extend .ul--no-bullets;
+        background-color: var(--color-action-trim);
     }
 
     .link-list__item {
@@ -47,37 +39,45 @@
     }
 }
 
+.no-js {
+    .settings-menu__wrapper, 
+    #js-burger-menu__links,
+    .menu-icon {
+        display: none;
+    }
+}
+
 @include desk {
-    .main-nav--inner {
+    .main-nav__inner {
         border-right: solid 1px var(--color-action-border);
         border-left: solid 1px var(--color-action-border);
     }
 }
 
-///////////////// Mobile Nav
-
-.menu-icon {
-    display: none;
-}
-
-.mobile-nav__foot-cap {
-    display: none;
-}
-
-@include mobile {
+.js {
     .main-nav {
-        position: static;
-    }
-
-    .js .main-nav {
         position: fixed;
     }
 
-    .js .main-nav__inner {
+    .main-nav__inner {
+        position: relative;
         background: var(--color-action-trim)
     }
 
-    .js .menu-icon {
+    .burger-menu__wrapper {
+        background: var(--color-action-trim);
+        position: relative;
+        z-index: 1;
+    }
+
+    .settings-menu__wrapper {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1;
+    }
+
+    .menu-icon {
         display: inline-block;
         border-radius: 5px;
         margin: 5px;
@@ -121,14 +121,10 @@
         }
     }
 
-    .js .menu-icon#js-settings { // Delete if posible
-        line-height: 32px;
-    }
-
-    .js .main-nav .link-list {
+    .main-nav .link-list {
         background: var(--color-action-nav);
         transition: bottom .3s ease-in-out;
-        position: absolute;
+        position: relative;
         bottom: -3px;
         width: 100%;
         border-bottom: solid 3px var(--color-action-trim-dark);
@@ -146,11 +142,11 @@
         }
     }
 
-    .js .main-nav .menu-icon[aria-expanded="true"]:after {
+    .main-nav .menu-icon[aria-expanded="true"]:after {
         opacity: 1;
     }
 
-    .js .main-nav .menu-icon[aria-expanded="true"] ~ .link-list {
+    .main-nav .menu-icon[aria-expanded="true"] ~ .link-list {
         background: var(--color-action-trim);
         border-top: none;
 

@@ -45,7 +45,7 @@ $screen-large: 1200px;
 }
 
 @mixin desk {
-    @media (min-width: $screen-large + 1) {
+    @media (min-width: $screen-large + 1px) {
         @content;
     }
 }

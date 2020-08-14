@@ -17,7 +17,7 @@
 }
 
 @include mobile {
-    html:not(.js) .brick--heading {
+    .no-js .brick--heading {
         padding-top: 0;
     }
 }
