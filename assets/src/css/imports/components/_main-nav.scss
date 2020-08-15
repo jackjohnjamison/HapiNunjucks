@@ -1,12 +1,12 @@
 .main-nav {
     position: fixed;
-    background: var(--color-action-nav);
+    // background: var(--color-action-nav);
     font-size: 18px;
     left: 0;
     right: 0;
     top: 0;
-    box-shadow: var(--shadow);
-    border-bottom: solid 1px var(--color-action-border);
+    // box-shadow: var(--shadow);
+    // border-bottom: solid 1px var(--color-action-border);
 
     .wrapper {
         padding: 0;
@@ -123,7 +123,7 @@
 
     .main-nav .link-list {
         background: var(--color-action-nav);
-        transition: bottom .3s ease-in-out;
+        // transition: margin .3s ease-in-out;
         position: relative;
         bottom: -3px;
         width: 100%;

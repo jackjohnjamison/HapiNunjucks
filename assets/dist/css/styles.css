@@ -903,13 +903,10 @@ img {
 
 .main-nav {
   position: fixed;
-  background: var(--color-action-nav);
   font-size: 18px;
   left: 0;
   right: 0;
-  top: 0;
-  box-shadow: var(--shadow);
-  border-bottom: solid 1px var(--color-action-border); }
+  top: 0; }
   .main-nav .wrapper {
     padding: 0;
     background-color: var(--color-action-trim); }
@@ -993,7 +990,6 @@ img {
 
 .js .main-nav .link-list {
   background: var(--color-action-nav);
-  transition: bottom .3s ease-in-out;
   position: relative;
   bottom: -3px;
   width: 100%;

@@ -12,7 +12,11 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-// Slide menu
+function pxToInt(pixelString) {
+  return parseInt(pixelString.replace('px', ''));
+} // Slide menu
+
+
 function slideMenu(containerID, buttonID, linksID) {
   var container = document.getElementById(containerID);
   var button = document.getElementById(buttonID);
@@ -26,23 +30,56 @@ function slideMenu(containerID, buttonID, linksID) {
     };
 
     var openMenu = function openMenu() {
-      links.style.bottom = '-' + linksOpenHeight;
+      var margin = pxToInt(links.style.marginTop);
+      var animation = setInterval(frame, 5);
+
+      function frame() {
+        if (pxToInt(links.style.marginTop) >= -openHeight) {
+          clearInterval(animation);
+          links.style.marginTop = '-' + openHeight + 'px';
+        } else {
+          margin += interval;
+          links.style.marginTop = margin + 'px';
+        }
+      }
+
       button.setAttribute('aria-expanded', 'true');
       setTabbing('0');
     };
 
     var closeMenu = function closeMenu() {
-      links.style.bottom = '-' + linksBorderBottomHeight;
+      var margin = pxToInt(links.style.marginTop);
+      var animation = setInterval(frame, 5);
+
+      function frame() {
+        if (pxToInt(links.style.marginTop) <= -closeHeight) {
+          console.log('close over');
+          clearInterval(animation);
+          links.style.marginTop = '-' + closeHeight + 'px';
+        } else {
+          console.log(pxToInt(links.style.marginTop), closeHeight);
+          margin -= interval;
+          console.log(margin);
+          links.style.marginTop = margin + 'px';
+        }
+      }
+
       button.setAttribute('aria-expanded', 'false');
       setTabbing('-1');
     };
 
-    var linksBorderBottomHeight = window.getComputedStyle(links).borderBottomWidth;
-    var linksOpenHeight = links.clientHeight + 4 + 'px';
+    // const openHeight = window.getComputedStyle(links).borderBottomWidth
+    var openHeight = pxToInt(window.getComputedStyle(links).borderBottomWidth);
+    var closeHeight = links.clientHeight + openHeight;
 
     var linkArray = _toConsumableArray(links.querySelectorAll('.link-list__item a'));
 
     setTabbing('-1');
+    links.style.marginTop = '-' + closeHeight + 'px';
+    var frameCount = 30;
+    var interval = closeHeight / frameCount;
+    console.log(interval);
+    closeMenu();
 
     button.onclick = function () {
       if (button.getAttribute('aria-expanded') == "true") {

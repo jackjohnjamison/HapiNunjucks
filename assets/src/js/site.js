@@ -1,3 +1,7 @@
+function pxToInt(pixelString) {
+    return parseInt(pixelString.replace('px', ''))
+}
+
 // Slide menu
 function slideMenu(containerID, buttonID, linksID) {
     const container = document.getElementById(containerID)
@@ -5,10 +9,11 @@ function slideMenu(containerID, buttonID, linksID) {
     const links = document.getElementById(linksID)
 
     if (container && button && links) {
-        const linksBorderBottomHeight = window.getComputedStyle(links).borderBottomWidth
-        const linksOpenHeight = links.clientHeight + 4 + 'px'
+        // const openHeight = window.getComputedStyle(links).borderBottomWidth
+        const openHeight = pxToInt(window.getComputedStyle(links).borderBottomWidth)
+        const closeHeight = links.clientHeight + openHeight
         const linkArray = [...links.querySelectorAll('.link-list__item a')]
-    
+
         function setTabbing(tabIndex) {
             linkArray.forEach(link => {
                 link.setAttribute('tabindex', tabIndex)
@@ -16,17 +21,49 @@ function slideMenu(containerID, buttonID, linksID) {
         }
     
         setTabbing('-1')
+        links.style.marginTop = '-' + closeHeight + 'px'
+
+        const frameCount = 30
+        const interval = closeHeight / frameCount
+        console.log(interval)
     
         function openMenu() {
-            links.style.bottom = '-' + linksOpenHeight
+            let margin = pxToInt(links.style.marginTop)
+            let animation = setInterval(frame, 5)
+            function frame() {
+                if ( pxToInt(links.style.marginTop) >= -openHeight ) {
+                    clearInterval(animation)
+                    links.style.marginTop = '-' + openHeight + 'px'
+                } else {
+                    margin += interval
+                    links.style.marginTop = margin + 'px'
+                }
+            }
             button.setAttribute('aria-expanded', 'true')
             setTabbing('0')
         }
+
         function closeMenu() {
-            links.style.bottom = '-' + linksBorderBottomHeight
+            let margin = pxToInt(links.style.marginTop)
+            let animation = setInterval(frame, 5)
+            function frame() {
+                if ( pxToInt(links.style.marginTop) <= -closeHeight ) {
+                    console.log('close over')
+                    clearInterval(animation)
+                    links.style.marginTop = '-' + closeHeight + 'px'
+                } else {
+                    console.log(pxToInt(links.style.marginTop), closeHeight)
+                    margin -= interval
+                    console.log(margin)
+                    links.style.marginTop = margin + 'px'
+                }
+            }
             button.setAttribute('aria-expanded', 'false')
             setTabbing('-1')
         }
+
+        closeMenu()
+
     
         button.onclick = () => {
             if (button.getAttribute('aria-expanded') == "true") {
