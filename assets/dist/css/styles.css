@@ -946,13 +946,13 @@ img {
 .js .burger-menu__wrapper {
   background: var(--color-action-trim);
   position: relative;
-  z-index: 1; }
+  z-index: 2; }
 
 .js .settings-menu__wrapper {
   position: absolute;
   right: 0;
   top: 0;
-  z-index: 1; }
+  z-index: 2; }
 
 .js .menu-icon {
   display: inline-block;
@@ -1002,14 +1002,11 @@ img {
   .js .main-nav .link-list .link-list__item a {
     padding-left: 8px; }
 
+.js #js-burger-menu__links {
+  z-index: 1; }
+
 .js .main-nav .menu-icon[aria-expanded="true"]:after {
   opacity: 1; }
-
-.js .main-nav .menu-icon[aria-expanded="true"] ~ .link-list {
-  background: var(--color-action-trim);
-  border-top: none; }
-  .js .main-nav .menu-icon[aria-expanded="true"] ~ .link-list .link-list__item a {
-    display: block; }
 
 .article-button--tab {
   border: solid 2px #000;

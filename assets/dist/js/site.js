@@ -18,6 +18,7 @@ function pxToInt(pixelString) {
 
 
 function slideMenu(containerID, buttonID, linksID) {
+  var openHeight = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
   var container = document.getElementById(containerID);
   var button = document.getElementById(buttonID);
   var links = document.getElementById(linksID);
@@ -29,56 +30,62 @@ function slideMenu(containerID, buttonID, linksID) {
       });
     };
 
-    var openMenu = function openMenu() {
-      var margin = pxToInt(links.style.marginTop);
-      var animation = setInterval(frame, 5);
+    var animateProperty = function animateProperty(element, property, step, target) {
+      isAnimating = true;
+      var propertyValue = pxToInt(element.style[property]);
+      var condition;
 
-      function frame() {
-        if (pxToInt(links.style.marginTop) >= -openHeight) {
-          clearInterval(animation);
-          links.style.marginTop = '-' + openHeight + 'px';
-        } else {
-          margin += interval;
-          links.style.marginTop = margin + 'px';
-        }
+      if (target > propertyValue) {
+        condition = function condition() {
+          return pxToInt(element.style[property]) >= target;
+        };
+
+        step *= -1;
+      } else {
+        condition = function condition() {
+          return pxToInt(element.style[property]) <= target;
+        };
       }
 
-      button.setAttribute('aria-expanded', 'true');
-      setTabbing('0');
+      var animation = setInterval(frame, 10);
+
+      function frame() {
+        propertyValue += step;
+        element.style[property] = propertyValue + 'px';
+
+        if (condition()) {
+          element.style[property] = target + 'px';
+          clearInterval(animation);
+          isAnimating = false;
+        }
+      }
+    };
+
+    var openMenu = function openMenu() {
+      if (!isAnimating) {
+        animateProperty(links, 'marginTop', interval, openHeight);
+        button.setAttribute('aria-expanded', 'true');
+        setTabbing('0');
+      }
     };
 
     var closeMenu = function closeMenu() {
-      var margin = pxToInt(links.style.marginTop);
-      var animation = setInterval(frame, 5);
-
-      function frame() {
-        if (pxToInt(links.style.marginTop) <= -closeHeight) {
-          console.log('close over');
-          clearInterval(animation);
-          links.style.marginTop = '-' + closeHeight + 'px';
-        } else {
-          console.log(pxToInt(links.style.marginTop), closeHeight);
-          margin -= interval;
-          console.log(margin);
-          links.style.marginTop = margin + 'px';
-        }
+      if (!isAnimating) {
+        animateProperty(links, 'marginTop', interval, closeHeight);
+        button.setAttribute('aria-expanded', 'false');
+        setTabbing('-1');
       }
-
-      button.setAttribute('aria-expanded', 'false');
-      setTabbing('-1');
     };
 
-    // const openHeight = window.getComputedStyle(links).borderBottomWidth
-    var openHeight = pxToInt(window.getComputedStyle(links).borderBottomWidth);
-    var closeHeight = links.clientHeight + openHeight;
+    var closeHeight = -links.clientHeight + openHeight;
 
     var linkArray = _toConsumableArray(links.querySelectorAll('.link-list__item a'));
 
+    var isAnimating = false;
     setTabbing('-1');
-    links.style.marginTop = '-' + closeHeight + 'px';
+    links.style.marginTop = closeHeight + 'px';
     var frameCount = 30;
     var interval = closeHeight / frameCount;
-    console.log(interval);
     closeMenu();
 
     button.onclick = function () {
@@ -89,15 +96,15 @@ function slideMenu(containerID, buttonID, linksID) {
       }
     };
 
-    document.onclick = function (event) {
+    document.addEventListener('click', function () {
       if (!container.contains(event.target)) {
         closeMenu();
       }
-    };
+    });
   }
 }
 
-slideMenu('js-main-nav', 'js-burger-menu', 'js-burger-menu__links');
+slideMenu('js-main-nav', 'js-burger-menu', 'js-burger-menu__links', -3);
 slideMenu('js-main-nav', 'js-settings-menu', 'js-settings-menu__links'); //////////////////////////////////////////////////////////////////////////////
 // Accordions
 
