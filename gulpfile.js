@@ -3,6 +3,7 @@ const minify = require("gulp-babel-minify");
 const sass = require('gulp-sass');
 const autoprefixer  = require('gulp-autoprefixer');
 const babel = require('gulp-babel');
+const rollup = require('gulp-rollup');
 
 var paths = {
 	assets: {
@@ -33,18 +34,29 @@ const brandingStylesMini = () => {
 
 const babelfy = () => {
 	return gulp.src(paths.assets.js.src)
-		.pipe(babel({
-			presets: ['@babel/env']
-		}))
-		.pipe(gulp.dest(paths.assets.js.dist))
+	.pipe(rollup({
+		input: 'assets/src/js/site.js',
+		output: {format: 'esm'}
+	}))
+	.pipe(babel({
+		presets: ['@babel/env']
+	}))
+	.pipe(gulp.dest(paths.assets.js.dist))
 };
 
 const babelMini = () => {
 	return gulp.src(paths.assets.js.src)
+	.pipe(rollup({
+		input: 'assets/src/js/site.js',
+		output: {format: 'esm'}
+	}))
+	.pipe(babel({
+		presets: ['@babel/env']
+	}))
     .pipe(minify({
-      mangle: {
-        keepClassName: true
-      }
+		mangle: {
+			keepClassName: true
+		}
     }))
     .pipe(gulp.dest(paths.assets.js.dist));
 }

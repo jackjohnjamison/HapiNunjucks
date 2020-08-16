@@ -1,7 +1,4 @@
-function pxToInt(pixelString) {
-    return parseInt(pixelString.replace('px', ''))
-}
-
+import { pxToInt } from './utils'
 
 // Slide menu
 function slideMenu(containerID, buttonID, linksID, openHeight = 0) {
