@@ -1,16 +1,38 @@
 .main-nav {
-    position: fixed;
-    // background: var(--color-action-nav);
+    overflow-x: hidden;
+    position: sticky;
     font-size: 18px;
     left: 0;
     right: 0;
     top: 0;
-    // box-shadow: var(--shadow);
-    // border-bottom: solid 1px var(--color-action-border);
 
     .wrapper {
         padding: 0;
         background-color: var(--color-action-trim);
+    }
+    
+    .burger-menu__wrapper:before,
+    .burger-menu__wrapper:after {
+        content: '';
+        height: calc(100% + 1px);
+        width: 50%;
+        background: var(--color-action-nav);
+        position: absolute;
+        top: -1px;
+        border-bottom: solid 6px var(--color-action-border);
+        border-top: solid 1px var(--color-action-border);
+    }
+    .burger-menu__wrapper:before {
+        left: calc(-50% - 1px);
+        box-shadow:
+        inset -79px -100px 102px -45px rgba(0,0,0,.5),
+        inset 104px 114px 31px -90px rgba(255,255,255,.5);
+    }
+    .burger-menu__wrapper:after {
+        right: calc(-50% - 1px);
+        box-shadow:
+        inset -79px -100px 102px -45px rgba(0,0,0,.5),
+        inset 104px 114px 31px -90px rgba(255,255,255,.5);
     }
 
     .link-list__item {
@@ -41,33 +63,45 @@
 
 .no-js {
     .settings-menu__wrapper, 
-    #js-burger-menu__links,
+    #js-settings-menu__links,
     .menu-icon {
         display: none;
     }
-}
 
-@include desk {
-    .main-nav__inner {
-        border-right: solid 1px var(--color-action-border);
-        border-left: solid 1px var(--color-action-border);
+    .main-nav {
+        background: var(--color-action-trim);
+        border-top: solid 1px var(--color-action-darkest);
+        border-bottom: solid 1px var(--color-action-darkest);
+    }
+
+    #js-burger-menu__links {
+        border-right: solid 1px var(--color-action-trim);
+        border-left: solid 1px var(--color-action-trim);
     }
 }
 
 .js {
-    .main-nav {
-        position: fixed;
-    }
-
     .main-nav__inner {
         position: relative;
-        background: var(--color-action-trim)
+        background: var(--color-action-trim);
+    }
+
+    .link-list {
+        box-shadow: var(--shadow);
+        border: solid 1px var(--color-action-trim-dark);
+        border-bottom: solid 3px var(--color-action-trim-dark);
+        box-sizing: border-box;
     }
 
     .burger-menu__wrapper {
+        border: 1px solid var(--color-action-darkest);
+        box-shadow: var(--shadow);
         background: var(--color-action-trim);
         position: relative;
         z-index: 2;
+        box-shadow: 
+        inset -79px -100px 102px -45px rgba(0,0,0,.5),
+        inset 104px 114px 31px -90px rgba(255,255,255,.5);
     }
 
     .settings-menu__wrapper {
@@ -90,6 +124,9 @@
         padding: 4px;
         transition: background .3s ease-in-out;
         position: relative;
+        box-shadow: 
+        inset 100px 96px 31px -90px rgba(255,255,255,.5),
+        inset -97px -94px 31px -90px rgba(0,0,0,.5);
         
         &:after {
             content: "\78";
@@ -103,6 +140,9 @@
             background: var(--color-action-trim-dark);
             opacity: 0;
             transition: opacity .3s ease-in-out, background .3s ease-in-out;
+            box-shadow:
+            inset 100px 96px 31px -90px rgba(255,255,255,.5),
+            inset -97px -94px 31px -90px rgba(0,0,0,.5);
         }
     
         &:hover,
@@ -124,7 +164,6 @@
     .main-nav .link-list {
         background: var(--color-action-nav);
         position: relative;
-        bottom: -3px;
         width: 100%;
         border-bottom: solid 3px var(--color-action-trim-dark);
 

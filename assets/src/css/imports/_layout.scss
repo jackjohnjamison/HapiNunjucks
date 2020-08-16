@@ -9,8 +9,10 @@ body {
     color: var(--color-text);
     margin: 0;
     padding: 0;
-    overflow-y:scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     background: var(--color-body);
+    position: relative;
 }
 
 .wrapper {

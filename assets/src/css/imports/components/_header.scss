@@ -1,0 +1,32 @@
+.header {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    // overflow-x: hidden;
+
+    div, nav {
+        pointer-events: auto;
+    }
+
+    .header__container {
+        overflow-x: hidden;
+    }
+
+    .hero-banner__text {
+        background: var(--color-brick);
+        text-align: center;
+        font-size: 56px;
+        padding: var(--interval-2);
+        margin: 0;
+        z-index: 1;
+        position: relative;
+
+        @include mobile {
+            font-size: 9vw;
+            padding: var(--interval-1);
+        }
+    }
+}

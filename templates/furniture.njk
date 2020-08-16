@@ -23,7 +23,12 @@
     <body class="page--{{model.pageName}}">
         {% block body %}
             {% block header_nav %}
-                {% include 'includes/header-nav.njk' %}
+                <header class="header">
+                    <div class="hero-banner__backdrop">
+                        <p class="hero-banner__text">Undead Pirate Ninja</p>
+                    </div>
+                    {% include 'includes/header-nav.njk' %}
+                </header>
             {% endblock %}
 
             <div class="wrapper">

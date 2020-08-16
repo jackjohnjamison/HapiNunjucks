@@ -54,8 +54,8 @@ function menus() {
         }
     }
     
-    slideMenu('js-main-nav', 'js-burger-menu', 'js-burger-menu__links', -3)
-    slideMenu('js-main-nav', 'js-settings-menu', 'js-settings-menu__links')
+    slideMenu('js-main-nav', 'js-burger-menu', 'js-burger-menu__links', -1)
+    slideMenu('js-main-nav', 'js-settings-menu', 'js-settings-menu__links', -1)
 }
 
 export { menus }
