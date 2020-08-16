@@ -5,9 +5,8 @@
     left: 0;
     right: 0;
     pointer-events: none;
-    // overflow-x: hidden;
 
-    div, nav {
+    .hero-banner__backdrop, .main-nav {
         pointer-events: auto;
     }
 
